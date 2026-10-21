@@ -1,0 +1,2467 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Hello, World!</title>
+</head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AL QALAM LEARNING ACEDMEY PARN KWAJA ABAD</title>
+<style>
+/* ============================================================
+   AL QALAM LEARNING ACEMEYY — DESIGN SYSTEM
+   ============================================================ */
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  background:#f4f6fb;color:#0f172a;font-size:15px;line-height:1.45;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{margin:0;font-weight:700;letter-spacing:-.01em}
+.muted{color:#64748b}
+.sm{font-size:12.5px}
+.spacer{flex:1}
+
+/* ---------- header ---------- */
+.app-header{
+  position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid #e9edf5;
+  display:flex;align-items:center;gap:10px;padding:9px 14px;
+  box-shadow:0 1px 0 rgba(16,24,40,.03);
+}
+.icon-btn{
+  width:40px;height:40px;border-radius:12px;border:1px solid #e6ebf3;background:#fff;
+  font-size:18px;cursor:pointer;display:grid;place-items:center;color:#334155;
+}
+.icon-btn:active{transform:scale(.96)}
+.brand{display:flex;align-items:center;gap:10px;cursor:pointer}
+.logo{
+  width:40px;height:40px;border-radius:13px;display:grid;place-items:center;
+  background:linear-gradient(135deg,#7c3aed,#06b6d4);color:#fff;font-weight:800;font-size:19px;
+  box-shadow:0 8px 18px -10px rgba(124,58,237,.9);
+}
+.brand-name{font-weight:800;font-size:15px;line-height:1.1}
+.brand-sub{font-size:11px;color:#64748b;line-height:1.2}
+.role-sel{
+  border:1px solid #e2e8f0;background:#f8fafc;border-radius:11px;padding:8px 10px;
+  font-size:13px;font-weight:600;color:#334155;cursor:pointer;max-width:130px;
+}
+
+/* ---------- drawer ---------- */
+.scrim{position:fixed;inset:0;background:rgba(15,23,42,.42);z-index:60;opacity:0;pointer-events:none;transition:.18s}
+.scrim.show{opacity:1;pointer-events:auto}
+.drawer{
+  position:fixed;top:0;left:0;bottom:0;width:280px;max-width:82vw;background:#fff;z-index:70;
+  transform:translateX(-105%);transition:transform .22s ease;display:flex;flex-direction:column;
+  box-shadow:12px 0 40px -20px rgba(15,23,42,.5);
+}
+.drawer.open{transform:translateX(0)}
+.drawer-head{display:flex;gap:10px;align-items:center;padding:16px;border-bottom:1px solid #eef2f7}
+.drawer-links{overflow:auto;padding:10px;flex:1}
+.drawer-links a{
+  display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:12px;
+  text-decoration:none;color:#1e293b;font-weight:600;font-size:14px;
+}
+.drawer-links a:hover{background:#f5f7fc}
+.drawer-links .di{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-size:14px;color:#fff}
+
+/* ---------- layout ---------- */
+#view{max-width:1180px;margin:0 auto;padding:16px 14px 90px}
+.card{
+  background:#fff;border:1px solid #eaeef6;border-radius:18px;padding:16px;
+  box-shadow:0 1px 2px rgba(16,24,40,.04),0 10px 26px -22px rgba(16,24,40,.55);
+  margin-bottom:14px;
+}
+.card-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.card-head h2{font-size:15.5px}
+.page-head{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px}
+.page-title{font-size:20px}
+.page-sub{font-size:12.5px;color:#64748b}
+
+/* ---------- hero ---------- */
+.hero{
+  border-radius:22px;padding:20px;color:#fff;margin-bottom:14px;
+  background:linear-gradient(135deg,#7c3aed 0%,#6366f1 45%,#06b6d4 100%);
+  box-shadow:0 20px 40px -26px rgba(99,102,241,.95);
+  display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap;
+}
+.hero-sub{font-size:12.5px;opacity:.9;font-weight:600}
+.hero-title{font-size:25px;margin:4px 0 6px}
+.hero-p{font-size:13px;opacity:.92;max-width:520px;margin:0}
+.hero-badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);padding:8px 12px;border-radius:12px;font-size:12px;font-weight:600}
+
+/* ---------- stat cards ---------- */
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:14px}
+.stat{border-radius:18px;padding:14px;color:#fff;box-shadow:0 14px 26px -20px rgba(15,23,42,.8)}
+.stat .k{font-size:11.5px;opacity:.92;font-weight:600}
+.stat .v{font-size:24px;font-weight:800;margin-top:4px;line-height:1}
+.stat .s{font-size:11px;opacity:.88;margin-top:5px}
+
+/* ---------- module grid ---------- */
+.mods{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:4px}
+.mod{border:0;background:transparent;display:flex;flex-direction:column;align-items:center;gap:8px;padding:11px 3px;border-radius:16px;cursor:pointer}
+.mod:hover{background:#f6f8fd}
+.mod:active{transform:scale(.97)}
+.mod .ic{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:23px;color:#fff;box-shadow:0 10px 20px -12px rgba(15,23,42,.7)}
+.mod .nm{font-size:11.5px;font-weight:600;color:#334155;text-align:center;line-height:1.2}
+
+/* ---------- gradients ---------- */
+.g1{background:linear-gradient(135deg,#7c3aed,#a78bfa)}
+.g2{background:linear-gradient(135deg,#06b6d4,#3b82f6)}
+.g3{background:linear-gradient(135deg,#f97316,#fbbf24)}
+.g4{background:linear-gradient(135deg,#10b981,#34d399)}
+.g5{background:linear-gradient(135deg,#ec4899,#f472b6)}
+.g6{background:linear-gradient(135deg,#6366f1,#8b5cf6)}
+.g7{background:linear-gradient(135deg,#ef4444,#f97316)}
+.g8{background:linear-gradient(135deg,#0ea5e9,#22d3ee)}
+
+/* ---------- forms ---------- */
+.fld{display:flex;flex-direction:column;gap:6px;font-size:12.5px;font-weight:600;color:#475569}
+input,select,textarea{
+  font-family:inherit;font-size:14px;color:#0f172a;background:#fff;
+  border:1px solid #e2e8f0;border-radius:12px;padding:10px 12px;outline:none;width:100%;
+}
+input:focus,select:focus,textarea:focus{border-color:#a78bfa;box-shadow:0 0 0 3px rgba(167,139,250,.18)}
+textarea{min-height:80px;resize:vertical}
+.search{max-width:320px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.row{display:flex;align-items:center;gap:10px}
+.wrap{flex-wrap:wrap}
+.gap{gap:10px}
+.grow{flex:1;min-width:140px}
+.mt{margin-top:12px}
+.mb{margin-bottom:12px}
+
+/* ---------- buttons ---------- */
+.btn{
+  border:0;border-radius:12px;padding:10px 15px;font-size:13.5px;font-weight:700;cursor:pointer;
+  background:linear-gradient(135deg,#7c3aed,#06b6d4);color:#fff;font-family:inherit;
+  box-shadow:0 10px 20px -14px rgba(124,58,237,.95);white-space:nowrap;
+}
+.btn:active{transform:scale(.98)}
+.btn.ghost{background:#fff;color:#334155;border:1px solid #e2e8f0;box-shadow:none}
+.btn.green{background:linear-gradient(135deg,#10b981,#22d3ee)}
+.btn.orange{background:linear-gradient(135deg,#f97316,#fbbf24)}
+.btn.red{background:linear-gradient(135deg,#ef4444,#f97316)}
+.btn.dark{background:linear-gradient(135deg,#1e293b,#334155)}
+.btn.sm{padding:7px 11px;font-size:12.5px;border-radius:10px}
+.btn.xs{padding:5px 9px;font-size:11.5px;border-radius:9px}
+
+/* ---------- pills / badges ---------- */
+.pill{display:inline-block;padding:3px 10px;border-radius:999px;font-size:11.5px;font-weight:700;background:#eef2f7;color:#475569}
+.pill.ok{background:#dcfce7;color:#166534}
+.pill.bad{background:#fee2e2;color:#991b1b}
+.pill.warn{background:#fef3c7;color:#92400e}
+.pill.info{background:#e0e7ff;color:#3730a3}
+
+/* ---------- table ---------- */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table.tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.tbl th{text-align:left;font-weight:700;color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:.04em;padding:9px 10px;border-bottom:1px solid #eef2f7;white-space:nowrap}
+.tbl td{padding:10px;border-bottom:1px solid #f3f6fa;vertical-align:middle}
+.tbl tr:last-child td{border-bottom:0}
+.tbl tbody tr:hover{background:#fafbff}
+
+/* ---------- attendance rows ---------- */
+.att-row{display:flex;align-items:center;gap:12px;padding:10px 4px;border-bottom:1px solid #f2f5fa}
+.att-row:last-child{border-bottom:0}
+.att-info{flex:1;min-width:0}
+.att-name{font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.att-sub{font-size:11.5px;color:#64748b}
+.seg{display:flex;gap:4px;background:#f1f5f9;padding:4px;border-radius:12px}
+.segbtn{
+  border:0;background:transparent;width:38px;height:32px;border-radius:9px;font-weight:800;
+  font-size:12.5px;color:#64748b;cursor:pointer;font-family:inherit;
+}
+.segbtn.P.on{background:#10b981;color:#fff}
+.segbtn.A.on{background:#ef4444;color:#fff}
+.segbtn.L.on{background:#f59e0b;color:#fff}
+
+/* ---------- progress ring ---------- */
+.ring{
+  width:48px;height:48px;border-radius:50%;display:grid;place-items:center;position:relative;
+  background:conic-gradient(var(--c) calc(var(--p)*1%), #e8edf6 0);flex:none;
+}
+.ring::before{content:'';position:absolute;inset:4px;border-radius:50%;background:#fff}
+.ring span{position:relative;z-index:1;font-size:10.5px;font-weight:800;color:#0f172a}
+
+/* ---------- class cards ---------- */
+.class-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.class-card{
+  border-radius:18px;padding:16px;color:#fff;cursor:pointer;border:0;text-align:left;
+  box-shadow:0 14px 26px -20px rgba(15,23,42,.85);font-family:inherit;
+}
+.class-card:active{transform:scale(.98)}
+.class-card .cn{font-size:16px;font-weight:800}
+.class-card .cs{font-size:11.5px;opacity:.9;margin-top:4px}
+
+/* ---------- misc ---------- */
+.empty{padding:26px 12px;text-align:center;color:#94a3b8;font-size:13.5px}
+.empty .e-ic{font-size:30px;display:block;margin-bottom:8px;opacity:.6}
+.tabs{display:flex;gap:6px;background:#f1f5f9;padding:5px;border-radius:14px;width:fit-content;max-width:100%;overflow:auto}
+.tabs button{border:0;background:transparent;padding:8px 14px;border-radius:10px;font-weight:700;font-size:13px;color:#64748b;cursor:pointer;font-family:inherit;white-space:nowrap}
+.tabs button.on{background:#fff;color:#0f172a;box-shadow:0 2px 8px -3px rgba(15,23,42,.25)}
+
+/* ---------- modal ---------- */
+.modal-wrap{position:fixed;inset:0;background:rgba(15,23,42,.45);z-index:80;display:flex;align-items:center;justify-content:center;padding:14px}
+.modal{background:#fff;border-radius:20px;width:100%;max-width:520px;max-height:90vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 70px -30px rgba(15,23,42,.9)}
+.modal.wide{max-width:820px}
+.modal-head{display:flex;align-items:center;gap:10px;padding:15px 18px;border-bottom:1px solid #eef2f7}
+.modal-head h3{font-size:16px;flex:1}
+.modal-head .x{border:0;background:#f1f5f9;width:32px;height:32px;border-radius:10px;cursor:pointer;font-size:15px;color:#475569}
+.modal-body{padding:16px 18px;overflow:auto}
+.modal-foot{padding:13px 18px;border-top:1px solid #eef2f7;display:flex;gap:10px;justify-content:flex-end}
+
+/* ---------- toast ---------- */
+#toast{
+  position:fixed;left:50%;bottom:26px;transform:translate(-50%,26px);z-index:99;
+  background:#0f172a;color:#fff;padding:12px 18px;border-radius:13px;font-size:13.5px;font-weight:600;
+  opacity:0;pointer-events:none;transition:.24s;max-width:90vw;text-align:center;
+}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+#toast.bad{background:#b91c1c}
+#toast.ok{background:#047857}
+
+/* ---------- print ---------- */
+#printArea{display:none}
+.p-head{display:flex;gap:14px;align-items:center;border-bottom:3px solid #7c3aed;padding-bottom:10px;margin-bottom:16px}
+.p-logo{width:54px;height:54px;border-radius:14px;background:linear-gradient(135deg,#7c3aed,#06b6d4);color:#fff;display:grid;place-items:center;font-size:26px;font-weight:800}
+.p-name{font-size:21px;font-weight:800}
+.p-tag{font-size:12px;color:#64748b}
+.p-title{text-align:center;font-size:17px;margin:0 0 6px}
+.p-meta{text-align:center;font-size:12px;color:#475569;margin-bottom:14px}
+.p-sign{display:flex;justify-content:space-between;margin-top:40px;font-size:12.5px;gap:20px}
+.p-note{margin-top:22px;text-align:center;font-size:10.5px;color:#94a3b8;border-top:1px solid #e5e7eb;padding-top:8px}
+#printArea table{width:100%;border-collapse:collapse;font-size:12px}
+#printArea th,#printArea td{border:1px solid #cbd5e1;padding:6px 8px;text-align:left}
+#printArea th{background:#f1f5f9;font-weight:700}
+
+@media print{
+  .app-header,.drawer,.scrim,#view,#modalRoot,#toast,.no-print{display:none !important}
+  body{background:#fff}
+  #printArea{display:block !important}
+  @page{margin:14mm}
+}
+@media (max-width:640px){
+  .hero-title{font-size:21px}
+  .page-title{font-size:18px}
+  .search{max-width:100%}
+  .brand-sub{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="app-header">
+  <button class="icon-btn" onclick="toggleDrawer(true)" aria-label="Open menu">☰</button>
+  <div class="brand" onclick="nav('dashboard',{})">
+    <div class="logo">A</div>
+    <div>
+      <div class="brand-name">Anisuno Academy</div>
+      <div class="brand-sub">School Management System</div>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <select class="role-sel" id="roleSel" onchange="setRole(this.value)" title="Switch role (demo)">
+    <option>Admin</option>
+    <option>Teacher</option>
+    <option>Student/Parent</option>
+  </select>
+</header>
+
+<!-- ================= DRAWER ================= -->
+<div class="scrim" id="scrim" onclick="toggleDrawer(false)"></div>
+<aside class="drawer" id="drawer">
+  <div class="drawer-head">
+    <div class="logo">A</div>
+    <div>
+      <b>Anisuno Academy</b>
+      <div class="muted sm">Navigation</div>
+    </div>
+  </div>
+  <div class="drawer-links" id="drawerLinks"></div>
+</aside>
+
+<!-- ================= MAIN ================= -->
+<main id="view"></main>
+
+<!-- ================= MODAL / TOAST / PRINT ================= -->
+<div id="modalRoot"></div>
+<div id="toast"></div>
+<div id="printArea"></div>
+
+<script>
+/* ============================================================================
+   ANISUNO ACADEMY — SCHOOL MANAGEMENT SYSTEM (single-file prototype)
+   Storage: browser localStorage  |  All sample records are DEMO DATA ONLY.
+   ============================================================================ */
+
+/* ---------------------------------------------------------------------------
+   1. UTILITIES
+--------------------------------------------------------------------------- */
+const KEY = 'anisuno_db_v1';
+const ROLE_KEY = 'anisuno_role';
+let DB = null;
+
+const uid = p => (p || 'id') + Math.random().toString(36).slice(2, 9);
+const todayISO = () => new Date().toISOString().slice(0, 10);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const money = n => 'Rs ' + Number(n || 0).toLocaleString();
+const clsName = id => (DB.classes.find(c => c.id === id) || {}).name || '—';
+const stuName = id => (DB.students.find(s => s.id === id) || {}).name || '—';
+const byRoll = (a, b) => Number(a.roll) - Number(b.roll);
+
+function grade(p){
+  if (p >= 90) return 'A+';
+  if (p >= 80) return 'A';
+  if (p >= 70) return 'B';
+  if (p >= 60) return 'C';
+  if (p >= 50) return 'D';
+  if (p >= 40) return 'E';
+  return 'F';
+}
+
+function saveDB(){ localStorage.setItem(KEY, JSON.stringify(DB)); }
+
+function loadDB(){
+  let raw = null;
+  try { raw = localStorage.getItem(KEY); } catch(e){ raw = null; }
+  if (raw) {
+    try { DB = JSON.parse(raw); } catch(e){ DB = null; }
+  }
+  if (!DB || !DB.classes || !DB.classes.length) { DB = seedDB(); saveDB(); }
+}
+
+function toast(msg, kind){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'show ' + (kind || '');
+  clearTimeout(t._t);
+  t._t = setTimeout(() => { t.className = ''; }, 2600);
+}
+
+function openModal(title, bodyHtml, footHtml, wide){
+  document.getElementById('modalRoot').innerHTML =
+    `<div class="modal-wrap" onclick="if(event.target===this)closeModal()">
+       <div class="modal ${wide ? 'wide' : ''}">
+         <div class="modal-head"><h3>${esc(title)}</h3><button class="x" onclick="closeModal()">✕</button></div>
+         <div class="modal-body">${bodyHtml}</div>
+         ${footHtml ? `<div class="modal-foot">${footHtml}</div>` : ''}
+       </div>
+     </div>`;
+}
+function closeModal(){ document.getElementById('modalRoot').innerHTML = ''; }
+
+function toggleDrawer(open){
+  document.getElementById('drawer').classList.toggle('open', !!open);
+  document.getElementById('scrim').classList.toggle('show', !!open);
+}
+
+/* ---------------------------------------------------------------------------
+   2. SEED DATA  (DEMO ONLY — not real school records)
+--------------------------------------------------------------------------- */
+function seedDB(){
+  const classNames = ['Nursery','Play Group','Prep/KG','Class 1','Class 2','Class 3','Class 4',
+    'Class 5','Class 6','Class 7','Class 8','Class 9','Class 10','First Year','Second Year'];
+  const classes = classNames.map((n, i) => ({ id: 'c' + (i + 1), name: n, sections: ['A', 'B'] }));
+
+  const names = ['Muhammad Umar','Ayesha Khan','Ali Hassan','Fatima Noor','Bilal Ahmed',
+    'Zainab Iqbal','Hassan Raza','Maryam Shah','Usman Tariq','Hira Aslam','Ahmad Raza',
+    'Sana Malik','Hamza Sheikh','Areeba Javed','Saad Iqbal','Noor Fatima','Ibrahim Khan',
+    'Amna Yousaf','Zaid Ali','Laiba Anwar'];
+  const fathers = ['Imran Khan','Kamran Ali','Nadeem Aslam','Tariq Mahmood','Shahid Iqbal',
+    'Yousaf Raza','Aslam Sheikh','Javed Malik','Waseem Abbas','Rashid Minhas'];
+
+  const students = [];
+  classes.forEach((c, ci) => {
+    for (let i = 0; i < 4; i++) {
+      const idx = (ci * 4 + i) % names.length;
+      students.push({
+        id: 's' + (students.length + 1),
+        name: names[idx],
+        father: fathers[(ci * 2 + i) % fathers.length],
+        roll: i + 1,
+        classId: c.id,
+        section: i < 2 ? 'A' : 'B',
+        dob: '201' + (3 + (ci % 6)) + '-0' + (1 + (i % 9)) + '-1' + (i % 9),
+        gender: i % 2 ? 'Female' : 'Male',
+        admission: '2024-04-0' + (1 + (i % 9)),
+        contact: '0300-12345' + (10 + i),
+        address: 'House ' + (i + 1) + ', Street ' + (ci + 1) + ', Lahore',
+        guardian: 'Guardian of ' + names[idx],
+        photo: ''
+      });
+    }
+  });
+
+  const teachers = [
+    { id: 't1', name: 'Sir Kamran Ali', subject: 'Mathematics', phone: '0301-1110001' },
+    { id: 't2', name: 'Miss Ayesha Siddiqui', subject: 'English', phone: '0301-1110002' },
+    { id: 't3', name: 'Sir Bilal Hussain', subject: 'Science', phone: '0301-1110003' },
+    { id: 't4', name: 'Miss Hina Rauf', subject: 'Urdu', phone: '0301-1110004' },
+    { id: 't5', name: 'Sir Danish Mehmood', subject: 'Computer', phone: '0301-1110005' },
+    { id: 't6', name: 'Miss Sana Tariq', subject: 'Islamiat', phone: '0301-1110006' }
+  ];
+
+  /* --- attendance: last 3 days for first 6 classes --- */
+  const attendance = [];
+  const dates = [0, 1, 2].map(d => { const dt = new Date(); dt.setDate(dt.getDate() - d); return dt.toISOString().slice(0, 10); });
+  dates.forEach((dt, di) => {
+    classes.slice(0, 6).forEach(c => {
+      ['A', 'B'].forEach(sec => {
+        const rec = {};
+        students.filter(s => s.classId === c.id && s.section === sec).forEach((s, i) => {
+          rec[s.id] = ['P', 'P', 'P', 'A', 'L'][(i + di) % 5];
+        });
+        if (Object.keys(rec).length) {
+          attendance.push({ id: uid('at'), date: dt, classId: c.id, section: sec, records: rec, by: 'Demo Teacher' });
+        }
+      });
+    });
+  });
+
+  /* --- fees: current month for every student --- */
+  const month = new Date().toISOString().slice(0, 7);
+  const fees = students.map((s, i) => {
+    const status = ['Paid', 'Unpaid', 'Partial'][i % 3];
+    const amount = 3500;
+    return {
+      id: uid('f'), studentId: s.id, month, type: 'Monthly Fee', amount,
+      paid: status === 'Paid' ? amount : (status === 'Partial' ? 1500 : 0),
+      status, date: status === 'Unpaid' ? '' : todayISO(), method: 'Cash'
+    };
+  });
+
+  /* --- tests / exams --- */
+  const tests = [];
+  const subjects = ['English', 'Urdu', 'Mathematics', 'Science'];
+  classes.slice(0, 5).forEach((c, ci) => {
+    const sts = students.filter(s => s.classId === c.id);
+    const rec = {};
+    sts.forEach((s, i) => { rec[s.id] = { theory: (i === 3 ? 0 : 9 + i), practical: 0, absent: i === 3 }; });
+    tests.push({
+      id: uid('te'), kind: 'test', classId: c.id, subject: subjects[ci % 4],
+      title: subjects[ci % 4] + ' Test', date: todayISO(), total: 15, practicalMax: 0, records: rec
+    });
+  });
+  tests.push({
+    id: uid('te'), kind: 'exam', classId: classes[1].id, subject: 'English',
+    title: 'First Term Examination', date: todayISO(), total: 100, practicalMax: 20,
+    records: (() => {
+      const rec = {};
+      students.filter(s => s.classId === classes[1].id).forEach((s, i) => {
+        rec[s.id] = { theory: 55 + i * 8, practical: 14 + (i % 5), absent: false };
+      });
+      return rec;
+    })()
+  });
+
+  /* --- timetable --- */
+  const timetable = [];
+  const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+  const periods = [['08:00', '08:45'], ['08:45', '09:30'], ['09:30', '10:15'], ['10:15', '11:00']];
+  classes.forEach((c, ci) => {
+    days.forEach((day, di) => {
+      periods.forEach((p, pi) => {
+        timetable.push({
+          id: uid('tt'), classId: c.id, day, period: pi + 1,
+          start: p[0], end: p[1],
+          subject: subjects[(ci + pi) % subjects.length],
+          teacher: teachers[(ci + di + pi) % teachers.length].name,
+          room: 'R-' + (ci + 1)
+        });
+      });
+    });
+  });
+
+  /* --- diary --- */
+  const diary = [
+    { id: uid('d'), date: todayISO(), classId: 'c1', section: 'A', subject: 'English',
+      homework: 'Learn and write 10 three-letter words (cat, bat, mat, rat, hat, sun, run, fun, bun, gun).',
+      lesson: 'Unit 1 — Phonics', notes: 'Parents please sign the copy.' },
+    { id: uid('d'), date: todayISO(), classId: 'c2', section: 'A', subject: 'Mathematics',
+      homework: 'Count and write numbers 1–50 in the notebook.',
+      lesson: 'Numbers 1–50', notes: '' },
+    { id: uid('d'), date: todayISO(), classId: 'c4', section: 'A', subject: 'Urdu',
+      homework: 'حمد یاد کریں اور الفاظ کے معنی لکھیں۔', lesson: 'سبق 2', notes: '' }
+  ];
+
+  /* --- teacher check-ins --- */
+  const checkins = teachers.slice(0, 4).map((t, i) => ({
+    id: uid('ci'), teacherId: t.id, date: todayISO(),
+    in: '0' + (7 + (i % 2)) + ':' + (10 + i) + '0', out: i < 2 ? '' : '14:0' + i
+  }));
+
+  /* --- leaves --- */
+  const leaves = [
+    { id: uid('lv'), teacherId: 't2', reason: 'Medical appointment', from: todayISO(), to: todayISO(),
+      status: 'Pending', comment: '', attachment: '' },
+    { id: uid('lv'), teacherId: 't3', reason: 'Family function', from: '2024-05-10', to: '2024-05-12',
+      status: 'Accepted', comment: 'Approved by Principal', attachment: '' },
+    { id: uid('lv'), teacherId: 't5', reason: 'Personal work', from: '2024-05-02', to: '2024-05-03',
+      status: 'Rejected', comment: 'Exam week — please reschedule', attachment: '' }
+  ];
+
+  /* --- applications --- */
+  const applications = [
+    { id: uid('ap'), type: 'Student', name: 'Muhammad Umar', subject: 'Fee concession request',
+      body: 'Requesting 20% fee concession due to financial hardship.', date: todayISO(), status: 'Pending', comment: '' },
+    { id: uid('ap'), type: 'Teacher', name: 'Miss Hina Rauf', subject: 'Leave application',
+      body: 'Leave required for three days.', date: todayISO(), status: 'Accepted', comment: 'Approved' },
+    { id: uid('ap'), type: 'Student', name: 'Ayesha Khan', subject: 'Transfer certificate',
+      body: 'Requesting school leaving certificate.', date: todayISO(), status: 'Rejected', comment: 'Pending dues' }
+  ];
+
+  /* --- lectures --- */
+  const lectures = [
+    { id: uid('lc'), classId: 'c4', subject: 'English', title: 'Alphabet & Sounds (Video)',
+      link: 'https://example.com/lecture-1', notes: 'Watch before Monday.', date: todayISO() },
+    { id: uid('lc'), classId: 'c5', subject: 'Mathematics', title: 'Addition Practice Sheet',
+      link: '', notes: 'Solve worksheet pages 12–14.', date: todayISO() }
+  ];
+
+  /* --- quizzes --- */
+  const quizzes = [{
+    id: uid('qz'), classId: 'c4', subject: 'English', title: 'Quick Grammar Quiz',
+    questions: [
+      { q: 'Which word is a noun?', options: ['Run', 'Apple', 'Quickly', 'Blue'], answer: 1 },
+      { q: 'Choose the correct spelling.', options: ['Recieve', 'Receive', 'Receeve', 'Receve'], answer: 1 },
+      { q: 'She ___ to school every day.', options: ['go', 'goes', 'going', 'gone'], answer: 1 }
+    ]
+  }];
+
+  return { classes, students, teachers, attendance, fees, tests, timetable, diary,
+           checkins, leaves, applications, lectures, quizzes, meta: { seeded: Date.now() } };
+}
+
+/* ---------------------------------------------------------------------------
+   3. STATE + ROLES
+--------------------------------------------------------------------------- */
+const state = { page: 'dashboard', params: {}, role: 'Admin' };
+
+function setRole(role){
+  state.role = role;
+  localStorage.setItem(ROLE_KEY, role);
+  toast('Role switched to ' + role, 'ok');
+  route();
+}
+const isAdmin = () => state.role === 'Admin';
+const isStaff = () => state.role === 'Admin' || state.role === 'Teacher';
+function guard(needStaff, action){
+  if (needStaff && !isStaff()) { toast('Permission denied for ' + state.role + '. Switch to Admin/Teacher.', 'bad'); return false; }
+  if (action === 'admin' && !isAdmin()) { toast('Only Admin can perform this action.', 'bad'); return false; }
+  return true;
+}
+
+/* ---------------------------------------------------------------------------
+   4. MODULE REGISTRY + ROUTER
+--------------------------------------------------------------------------- */
+const MODULES = [
+  { id: 'diary',        name: 'Diary',              icon: '📔', g: 'g3' },
+  { id: 'examResults',  name: 'Exam Results',       icon: '🏆', g: 'g1' },
+  { id: 'testResults',  name: 'Test Results',       icon: '📊', g: 'g2' },
+  { id: 'timetable',    name: 'Timetable',          icon: '🗓️', g: 'g6' },
+  { id: 'attendance',   name: 'Attendance',         icon: '✅', g: 'g4' },
+  { id: 'transactions', name: 'Transactions',       icon: '💳', g: 'g5' },
+  { id: 'applications', name: 'Applications',       icon: '📝', g: 'g7' },
+  { id: 'checkin',      name: 'Check-in / Check-out', icon: '🕒', g: 'g8' },
+  { id: 'teacher',      name: 'Teacher Dashboard',  icon: '👩‍🏫', g: 'g1' },
+  { id: 'students',     name: 'Student Management', icon: '🎒', g: 'g4' },
+  { id: 'classes',      name: 'Class Management',   icon: '🏫', g: 'g6' },
+  { id: 'fees',         name: 'Fee Management',     icon: '💰', g: 'g3' },
+  { id: 'lectures',     name: 'Lecture Upload',     icon: '🎥', g: 'g5' },
+  { id: 'quiz',         name: 'Quiz & MCQs',        icon: '❓', g: 'g7' },
+  { id: 'reports',      name: 'Reports & Printing', icon: '🖨️', g: 'g2' }
+];
+
+const ROUTES = {
+  dashboard: pageDashboard,
+  diary: pageDiary,
+  examResults: () => pageResults('exam'),
+  testResults: () => pageResults('test'),
+  timetable: pageTimetable,
+  attendance: pageAttendance,
+  transactions: pageTransactions,
+  applications: pageApplications,
+  checkin: pageCheckin,
+  teacher: pageTeacher,
+  students: pageStudents,
+  classes: pageClasses,
+  fees: pageFees,
+  lectures: pageLectures,
+  quiz: pageQuiz,
+  reports: pageReports,
+  marks: pageMarks
+};
+
+function nav(page, params){
+  state.params = params || {};
+  if (location.hash === '#/' + page) { closeModal(); route(); }
+  else location.hash = '#/' + page;
+}
+
+function route(){
+  const hash = (location.hash || '').replace(/^#\/?/, '') || 'dashboard';
+  const page = ROUTES[hash] ? hash : 'dashboard';
+  state.page = page;
+  closeModal();
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('scrim').classList.remove('show');
+  ROUTES[page]();
+  window.scrollTo({ top: 0, behavior: 'auto' });
+}
+
+/* ---------------------------------------------------------------------------
+   5. SHARED UI HELPERS
+--------------------------------------------------------------------------- */
+function pageHead(title, sub){
+  return `<div class="page-head">
+    <button class="btn ghost sm" onclick="nav('dashboard',{})">← Back</button>
+    <div><h1 class="page-title">${esc(title)}</h1><div class="page-sub">${esc(sub || '')}</div></div>
+  </div>`;
+}
+function classOptions(selected){
+  return DB.classes.map(c => `<option value="${c.id}" ${c.id === selected ? 'selected' : ''}>${esc(c.name)}</option>`).join('');
+}
+function sectionOptions(cls, selected){
+  const secs = (DB.classes.find(c => c.id === cls) || { sections: ['A'] }).sections;
+  return secs.map(s => `<option ${s === selected ? 'selected' : ''}>${esc(s)}</option>`).join('');
+}
+function emptyState(msg, icon){
+  return `<div class="empty"><span class="e-ic">${icon || '📭'}</span>${esc(msg)}</div>`;
+}
+function ringHTML(pct){
+  const p = Math.max(0, Math.min(100, Math.round(pct)));
+  const c = p >= 70 ? '#10b981' : p >= 40 ? '#f59e0b' : '#ef4444';
+  return `<div class="ring" style="--p:${p};--c:${c}"><span>${p}%</span></div>`;
+}
+
+/* ---------------------------------------------------------------------------
+   6. DASHBOARD
+--------------------------------------------------------------------------- */
+function pageDashboard(){
+  const totalStudents = DB.students.length;
+  const todayAtt = DB.attendance.filter(a => a.date === todayISO());
+  let marked = 0, present = 0;
+  todayAtt.forEach(a => Object.values(a.records).forEach(v => { marked++; if (v === 'P') present++; }));
+  const pct = marked ? Math.round(present / marked * 100) : 0;
+  const unpaid = DB.fees.filter(f => f.status !== 'Paid');
+  const dueAmount = unpaid.reduce((t, f) => t + (f.amount - (f.paid || 0)), 0);
+  const pendingApps = DB.applications.filter(a => a.status === 'Pending').length;
+
+  document.getElementById('view').innerHTML = `
+  <div class="hero">
+    <div>
+      <div class="hero-sub">Welcome back, ${esc(state.role)}</div>
+      <h1 class="hero-title">Anisuno Academy</h1>
+      <p class="hero-p">Attendance, results, fees, timetable and more — all in one place.</p>
+    </div>
+    <div class="hero-badge">${new Date().toLocaleDateString(undefined,{weekday:'long',day:'numeric',month:'long',year:'numeric'})}</div>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat g1"><div class="k">Total Students</div><div class="v">${totalStudents}</div><div class="s">${DB.classes.length} classes</div></div>
+    <div class="stat g4"><div class="k">Today's Attendance</div><div class="v">${pct}%</div><div class="s">${present}/${marked} present</div></div>
+    <div class="stat g3"><div class="k">Outstanding Fees</div><div class="v">${money(dueAmount)}</div><div class="s">${unpaid.length} records</div></div>
+    <div class="stat g7"><div class="k">Pending Applications</div><div class="v">${pendingApps}</div><div class="s">awaiting review</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <h2>Services</h2>
+      <div class="spacer"></div>
+      <input class="search" id="modSearch" placeholder="Search services…" oninput="filterMods(this.value)">
+    </div>
+    <div class="mods" id="mods">
+      ${MODULES.map(m => `<button class="mod" data-n="${esc(m.name.toLowerCase())}" onclick="nav('${m.id}',{})">
+        <span class="ic ${m.g}">${m.icon}</span><span class="nm">${esc(m.name)}</span></button>`).join('')}
+    </div>
+    <div id="modEmpty" class="empty" style="display:none"><span class="e-ic">🔎</span>No service matches your search.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h2>Quick Actions</h2></div>
+    <div class="row wrap gap">
+      <button class="btn green sm" onclick="nav('attendance',{})">✅ Take Attendance</button>
+      <button class="btn sm" onclick="nav('marks',{})">📝 Enter Marks</button>
+      <button class="btn orange sm" onclick="nav('diary',{})">📔 Add Diary</button>
+      <button class="btn ghost sm" onclick="nav('fees',{})">💰 Collect Fee</button>
+      <button class="btn ghost sm" onclick="nav('applications',{})">📝 Applications</button>
+      <button class="btn ghost sm" onclick="nav('reports',{})">🖨️ Print Reports</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h2>Recent Activity</h2></div>
+    ${DB.applications.slice(-4).reverse().map(a => `
+      <div class="att-row">
+        <div class="att-info">
+          <div class="att-name">${esc(a.subject)}</div>
+          <div class="att-sub">${esc(a.type)} · ${esc(a.name)} · ${esc(a.date)}</div>
+        </div>
+        <span class="pill ${a.status === 'Accepted' ? 'ok' : a.status === 'Rejected' ? 'bad' : 'warn'}">${esc(a.status)}</span>
+      </div>`).join('') || emptyState('No activity yet.')}
+  </div>`;
+}
+
+function filterMods(q){
+  q = q.trim().toLowerCase();
+  let shown = 0;
+  document.querySelectorAll('#mods .mod').forEach(el => {
+    const match = !q || el.dataset.n.includes(q);
+    el.style.display = match ? '' : 'none';
+    if (match) shown++;
+  });
+  document.getElementById('modEmpty').style.display = shown ? 'none' : 'block';
+}
+
+/* ---------------------------------------------------------------------------
+   7. STUDENT ATTENDANCE
+--------------------------------------------------------------------------- */
+const attState = { date: todayISO(), classId: null, section: 'A', records: {}, search: '', reportPeriod: 'month' };
+
+function pageAttendance(){
+  if (!attState.classId) attState.classId = DB.classes[0].id;
+  const cls = DB.classes.find(c => c.id === attState.classId) || DB.classes[0];
+  if (!cls.sections.includes(attState.section)) attState.section = cls.sections[0];
+  loadAttRecords();
+
+  document.getElementById('view').innerHTML = `
+  ${pageHead('Student Attendance', 'Mark present / absent / leave, generate reports and print sheets')}
+  <div class="card">
+    <div class="grid3">
+      <label class="fld">Date
+        <input type="date" value="${attState.date}" onchange="attState.date=this.value;loadAttRecords();renderAttRows();renderAttReport()">
+      </label>
+      <label class="fld">Class
+        <select onchange="attState.classId=this.value;attState.section=DB.classes.find(c=>c.id===this.value).sections[0];pageAttendance()">
+          ${classOptions(attState.classId)}
+        </select>
+      </label>
+      <label class="fld">Section
+        <select onchange="attState.section=this.value;loadAttRecords();renderAttRows();renderAttReport()">
+          ${sectionOptions(attState.classId, attState.section)}
+        </select>
+      </label>
+    </div>
+    <div class="row wrap gap mt">
+      <input class="search grow" placeholder="Search by name or roll number" oninput="attState.search=this.value;renderAttRows()">
+      <button class="btn green sm" onclick="attMarkAll('P')">Mark All Present</button>
+      <button class="btn red sm" onclick="attMarkAll('A')">Mark All Absent</button>
+      <button class="btn orange sm" onclick="attMarkAll('L')">Mark All Leave</button>
+      <button class="btn sm" onclick="saveAttendance()">💾 Save Attendance</button>
+      <button class="btn ghost sm" onclick="printAttendanceSheet()">🖨️ Print Sheet</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h2>Students — ${esc(cls.name)} (${esc(attState.section)})</h2><span class="pill" id="attCount"></span></div>
+    <div id="attRows"></div>
+  </div>
+
+  <div class="card" id="attReport"></div>`;
+
+  renderAttRows();
+  renderAttReport();
+}
+
+function loadAttRecords(){
+  const rec = DB.attendance.find(a =>
+    a.date === attState.date && a.classId === attState.classId && a.section === attState.section);
+  attState.records = rec ? Object.assign({}, rec.records) : {};
+}
+
+function attStudents(){
+  const q = attState.search.trim().toLowerCase();
+  return DB.students
+    .filter(s => s.classId === attState.classId && s.section === attState.section)
+    .filter(s => !q || s.name.toLowerCase().includes(q) || String(s.roll).includes(q))
+    .sort(byRoll);
+}
+
+function renderAttRows(){
+  const list = attStudents();
+  const box = document.getElementById('attRows');
+  if (!box) return;
+  const cnt = document.getElementById('attCount');
+  if (cnt) {
+    const markedCount = Object.keys(attState.records).length;
+    cnt.textContent = list.length + ' students · ' + markedCount + ' marked';
+  }
+  if (!list.length) { box.innerHTML = emptyState('No students in this class/section.', '🎒'); return; }
+  box.innerHTML = list.map(s => {
+    const st = attState.records[s.id] || '';
+    return `<div class="att-row">
+      <div class="att-info">
+        <div class="att-name">${esc(s.name)}</div>
+        <div class="att-sub">S/O ${esc(s.father)} · Roll ${esc(s.roll)}</div>
+      </div>
+      <div class="seg">
+        <button class="segbtn P ${st === 'P' ? 'on' : ''}" onclick="attMark('${s.id}','P')">P</button>
+        <button class="segbtn A ${st === 'A' ? 'on' : ''}" onclick="attMark('${s.id}','A')">A</button>
+        <button class="segbtn L ${st === 'L' ? 'on' : ''}" onclick="attMark('${s.id}','L')">L</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function attMark(id, status){
+  if (!guard(true)) return;
+  attState.records[id] = status;
+  renderAttRows();
+}
+function attMarkAll(status){
+  if (!guard(true)) return;
+  attStudents().forEach(s => { attState.records[s.id] = status; });
+  renderAttRows();
+  toast('All students marked as ' + ({P:'Present',A:'Absent',L:'Leave'}[status]));
+}
+
+function saveAttendance(){
+  if (!guard(true)) return;
+  const idx = DB.attendance.findIndex(a =>
+    a.date === attState.date && a.classId === attState.classId && a.section === attState.section);
+  const payload = {
+    date: attState.date, classId: attState.classId, section: attState.section,
+    records: attState.records, by: state.role
+  };
+  if (idx >= 0) DB.attendance[idx] = Object.assign(DB.attendance[idx], payload);
+  else DB.attendance.push(Object.assign({ id: uid('at') }, payload));
+  saveDB();
+  toast('Attendance saved for ' + attState.date, 'ok');
+  renderAttReport();
+}
+
+function inRange(dateStr, period){
+  const d = new Date(dateStr + 'T00:00:00');
+  const now = new Date();
+  if (period === 'day') return dateStr === todayISO();
+  if (period === 'week') { const w = new Date(); w.setDate(w.getDate() - 7); return d >= w; }
+  if (period === 'month') return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
+  if (period === 'year') return d.getFullYear() === now.getFullYear();
+  return true;
+}
+
+function renderAttReport(){
+  const box = document.getElementById('attReport');
+  if (!box) return;
+  const records = DB.attendance.filter(a =>
+    a.classId === attState.classId && a.section === attState.section &&
+    inRange(a.date, attState.reportPeriod));
+
+  const stats = {};
+  DB.students.filter(s => s.classId === attState.classId && s.section === attState.section).forEach(s => {
+    stats[s.id] = { P: 0, A: 0, L: 0, name: s.name, roll: s.roll, father: s.father };
+  });
+  records.forEach(a => {
+    Object.entries(a.records).forEach(([sid, v]) => {
+      if (stats[sid] && stats[sid][v] !== undefined) stats[sid][v]++;
+    });
+  });
+
+  const rows = Object.entries(stats).sort((a, b) => a[1].roll - b[1].roll);
+
+  box.innerHTML = `
+    <div class="card-head">
+      <h2>Attendance Report</h2>
+      <select class="search" onchange="attState.reportPeriod=this.value;renderAttReport()">
+        ${[['day','Daily'],['week','Weekly'],['month','Monthly'],['year','Yearly']].map(([v,l]) =>
+          `<option value="${v}" ${attState.reportPeriod === v ? 'selected' : ''}>${l}</option>`).join('')}
+      </select>
+      <div class="spacer"></div>
+      <button class="btn ghost sm" onclick="printAttendanceReport()">🖨️ Print Report</button>
+    </div>
+    <div class="table-wrap">
+      <table class="tbl">
+        <thead><tr><th>Roll</th><th>Student</th><th>Present</th><th>Absent</th><th>Leave</th><th>Percentage</th></tr></thead>
+        <tbody>
+          ${rows.length ? rows.map(([sid, s]) => {
+            const total = s.P + s.A + s.L;
+            const pct = total ? Math.round(s.P / total * 100) : 0;
+            return `<tr>
+              <td>${esc(s.roll)}</td>
+              <td><b>${esc(s.name)}</b><div class="muted sm">S/O ${esc(s.father)}</div></td>
+              <td><span class="pill ok">${s.P}</span></td>
+              <td><span class="pill bad">${s.A}</span></td>
+              <td><span class="pill warn">${s.L}</span></td>
+              <td><div class="row gap"><span>${pct}%</span>${ringHTML(pct)}</div></td>
+            </tr>`;
+          }).join('') : `<tr><td colspan="6">${emptyState('No attendance records for this period.')}</td></tr>`}
+        </tbody>
+      </table>
+    </div>`;
+}
+
+function printAttendanceSheet(){
+  const list = DB.students.filter(s => s.classId === attState.classId && s.section === attState.section).sort(byRoll);
+  const body = `<table><thead><tr><th>#</th><th>Roll</th><th>Student Name</th><th>Father Name</th><th>Status</th></tr></thead><tbody>
+    ${list.map((s, i) => {
+      const st = attState.records[s.id] || '—';
+      return `<tr><td>${i + 1}</td><td>${esc(s.roll)}</td><td>${esc(s.name)}</td><td>${esc(s.father)}</td>
+        <td>${st === 'P' ? 'Present' : st === 'A' ? 'Absent' : st === 'L' ? 'Leave' : 'Not marked'}</td></tr>`;
+    }).join('')}
+  </tbody></table>`;
+  printDoc('Daily Attendance Sheet', body,
+    `${clsName(attState.classId)} — Section ${attState.section} &nbsp;|&nbsp; Date: ${attState.date}`);
+}
+
+function printAttendanceReport(){
+  const records = DB.attendance.filter(a =>
+    a.classId === attState.classId && a.section === attState.section && inRange(a.date, attState.reportPeriod));
+  const stats = {};
+  DB.students.filter(s => s.classId === attState.classId && s.section === attState.section).forEach(s => {
+    stats[s.id] = { P: 0, A: 0, L: 0, name: s.name, roll: s.roll, father: s.father };
+  });
+  records.forEach(a => Object.entries(a.records).forEach(([sid, v]) => { if (stats[sid]) stats[sid][v]++; }));
+  const body = `<table><thead><tr><th>Roll</th><th>Student</th><th>Father</th><th>Present</th><th>Absent</th><th>Leave</th><th>%</th></tr></thead><tbody>
+    ${Object.values(stats).sort(byRoll).map(s => {
+      const t = s.P + s.A + s.L;
+      return `<tr><td>${esc(s.roll)}</td><td>${esc(s.name)}</td><td>${esc(s.father)}</td>
+        <td>${s.P}</td><td>${s.A}</td><td>${s.L}</td><td>${t ? Math.round(s.P / t * 100) : 0}%</td></tr>`;
+    }).join('')}
+  </tbody></table>`;
+  printDoc('Attendance Summary Report', body,
+    `${clsName(attState.classId)} — Section ${attState.section} &nbsp;|&nbsp; Period: ${attState.reportPeriod}`);
+}
+
+/* ---------------------------------------------------------------------------
+   8. TEACHER CHECK-IN / CHECK-OUT + LEAVE
+--------------------------------------------------------------------------- */
+function pageCheckin(){
+  const today = todayISO();
+  const todays = DB.checkins.filter(c => c.date === today);
+  const leaves = DB.leaves;
+  const counts = {
+    total: leaves.length,
+    accepted: leaves.filter(l => l.status === 'Accepted').length,
+    rejected: leaves.filter(l => l.status === 'Rejected').length,
+    pending: leaves.filter(l => l.status === 'Pending').length
+  };
+
+  document.getElementById('view').innerHTML = `
+  ${pageHead('Teacher Check-in / Check-out', 'Daily attendance, leave requests and approval workflow')}
+
+  <div class="stat-row">
+    <div class="stat g1"><div class="k">Total Applications</div><div class="v">${counts.total}</div><div class="s">all leave requests</div></div>
+    <div class="stat g4"><div class="k">Accepted</div><div class="v">${counts.accepted}</div><div class="s">approved by admin</div></div>
+    <div class="stat g7"><div class="k">Rejected</div><div class="v">${counts.rejected}</div><div class="s">declined requests</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h2>Today — ${today}</h2><div class="spacer"></div>
+      <button class="btn orange sm" onclick="openLeaveForm()">📩 Request Leave</button>
+      <button class="btn ghost sm" onclick="printTeacherAttendance()">🖨️ Print Monthly Sheet</button>
+    </div>
+    <div class="table-wrap">
+      <table class="tbl">
+        <thead><tr><th>Teacher</th><th>Subject</th><th>Check-in</th><th>Check-out</th><th>Status</th><th>Action</th></tr></thead>
+        <tbody>
+          ${DB.teachers.map(t => {
+            const rec = todays.find(c => c.teacherId === t.id);
+            return `<tr>
+              <td><b>${esc(t.name)}</b></td>
+              <td>${esc(t.subject)}</td>
+              <td>${rec && rec.in ? esc(rec.in) : '—'}</td>
+              <td>${rec && rec.out ? esc(rec.out) : '—'}</td>
+              <td>${rec ? (rec.out ? '<span class="pill ok">Completed</span>' : '<span class="pill warn">Checked In</span>') : '<span class="pill bad">Absent</span>'}</td>
+              <td class="row gap">
+                ${!rec ? `<button class="btn green xs" onclick="teacherCheckIn('${t.id}')">Check In</button>` : ''}
+                ${rec && !rec.out ? `<button class="btn dark xs" onclick="teacherCheckOut('${t.id}')">Check Out</button>` : ''}
+                ${rec && rec.out ? `<span class="muted sm">Done</span>` : ''}
+              </td>
+            </tr>`;
+          }).join('')}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h2>Leave Applications</h2><div class="spacer"></div>
+      <span class="pill info">${counts.pending} pending</span>
+    </div>
+    <div class="table-wrap">
+      <table class="tbl">
+        <thead><tr><th>Teacher</th><th>Reason</th><th>From</th><th>To</th><th>Status</th><th>Comments</th><th>Action</th></tr></thead>
+        <tbody>
+          ${leaves.length ? leaves.map(l => `
+            <tr>
+              <td><b>${esc((DB.teachers.find(t => t.id === l.teacherId) || {}).name || '—')}</b></td>
+              <td>${esc(l.reason)}</td>
+              <td>${esc(l.from)}</td>
+              <td>${esc(l.to)}</td>
+              <td><span class="pill ${l.status === 'Accepted' ? 'ok' : l.status === 'Rejected' ? 'bad' : 'warn'}">${esc(l.status)}</span></td>
+              <td class="muted sm">${esc(l.comment || '—')}</td>
+              <td class="row gap">
+                ${l.status === 'Pending' ? `
+                  <button class="btn green xs" onclick="reviewLeave('${l.id}','Accepted')">Approve</button>
+                  <button class="btn red xs" onclick="reviewLeave('${l.id}','Rejected')">Reject</button>` : '<span class="muted sm">Reviewed</span>'}
+              </td>
+            </tr>`).join('') : `<tr><td colspan="7">${emptyState('No leave applications yet.')}</td></tr>`}
+        </tbody>
+      </table>
+    </div>
+  </div>`;
+}
+
+function teacherCheckIn(id){
+  if (!guard(true)) return;
+  DB.checkins.push({ id: uid('ci'), teacherId: id, date: todayISO(), in: new Date().toTimeString().slice(0, 5), out: '' });
+  saveDB(); toast('Checked in successfully', 'ok'); pageCheckin();
+}
+function teacherCheckOut(id){
+  if (!guard(true)) return;
+  const rec = DB.checkins.find(c => c.teacherId === id && c.date === todayISO());
+  if (!rec) return toast('No check-in found for today', 'bad');
+  rec.out = new Date().toTimeString().slice(0, 5);
+  saveDB(); toast('Checked out at ' + rec.out, 'ok'); pageCheckin();
+}
+
+function openLeaveForm(){
+  if (!guard(true)) return;
+  openModal('Request Leave', `
+    <div class="grid2">
+      <label class="fld">Teacher
+        <select id="lvTeacher">${DB.teachers.map(t => `<option value="${t.id}">${esc(t.name)}</option>`).join('')}</select>
+      </label>
+      <label class="fld">Reason
+        <input id="lvReason" placeholder="e.g. Medical appointment">
+      </label>
+      <label class="fld">Start Date<input type="date" id="lvFrom" value="${todayISO()}"></label>
+      <label class="fld">End Date<input type="date" id="lvTo" value="${todayISO()}"></label>
+    </div>
+    <label class="fld mt">Attachment (optional note / file name)
+      <input id="lvFile" placeholder="e.g. medical-certificate.pdf">
+    </label>`,
+    `<button class="btn ghost" onclick="closeModal()">Cancel</button>
+     <button class="btn" onclick="submitLeave()">Submit Application</button>`);
+}
+
+function submitLeave(){
+  const teacherId = document.getElementById('lvTeacher').value;
+  const reason = document.getElementById('lvReason').value.trim();
+  const from = document.getElementById('lvFrom').value;
+  const to = document.getElementById('lvTo').value;
+  const file = document.getElementById('lvFile').value.trim();
+  if (!reason) return toast('Please enter a reason', 'bad');
+  if (!from || !to) return toast('Please select dates', 'bad');
+  if (to < from) return toast('End date cannot be before start date', 'bad');
+  DB.leaves.push({ id: uid('lv'), teacherId, reason, from, to, status: 'Pending', comment: '', attachment: file });
+  saveDB(); closeModal(); toast('Leave application submitted', 'ok'); pageCheckin();
+}
+
+function reviewLeave(id, status){
+  if (!guard(false, 'admin')) return;
+  const l = DB.leaves.find(x => x.id === id);
+  if (!l) return;
+  openModal('Review Leave — ' + status, `
+    <p class="muted sm">Optional comment for the teacher:</p>
+    <input id="rvComment" placeholder="Comment">`,
+    `<button class="btn ghost" onclick="closeModal()">Cancel</button>
+     <button class="btn ${status === 'Accepted' ? 'green' : 'red'}" onclick="confirmReview('${id}','${status}')">Confirm ${status}</button>`);
+}
+function confirmReview(id, status){
+  const l = DB.leaves.find(x => x.id === id);
+  const c = document.getElementById('rvComment').value.trim();
+  if (l) { l.status = status; l.comment = c || (status === 'Accepted' ? 'Approved by Admin' : 'Rejected by Admin'); }
+  saveDB(); closeModal(); toast('Leave ' + status.toLowerCase(), status === 'Accepted' ? 'ok' : 'bad');
+  pageCheckin();
+}
+
+function printTeacherAttendance(){
+  const body = `<table><thead><tr><th>#</th><th>Teacher</th><th>Subject</th><th>Check-in</th><th>Check-out</th><th>Date</th></tr></thead><tbody>
+    ${DB.checkins.length ? DB.checkins.map((c, i) => {
+      const t = DB.teachers.find(x => x.id === c.teacherId) || {};
+      return `<tr><td>${i + 1}</td><td>${esc(t.name || '—')}</td><td>${esc(t.subject || '—')}</td>
+        <td>${esc(c.in || '—')}</td><td>${esc(c.out || '—')}</td><td>${esc(c.date)}</td></tr>`;
+    }).join('') : '<tr><td colspan="6">No records</td></tr>'}
+  </tbody></table>`;
+  printDoc('Teacher Attendance Sheet', body, 'Monthly record — demo data');
+}
+
+/* ---------------------------------------------------------------------------
+   9. CLASS MANAGEMENT
+--------------------------------------------------------------------------- */
+function pageClasses(){
+  document.getElementById('view').innerHTML = `
+  ${pageHead('Class Management', 'Add, edit or remove classes and sections')}
+  <div class="card">
+    <div class="card-head"><h2>All Classes (${DB.classes.length})</h2><div class="spacer"></div>
+      <button class="btn sm" onclick="openClassForm()">＋ Add Class</button>
+    </div>
+    <div class="class-grid">
+      ${DB.classes.map((c, i) => {
+        const count = DB.students.filter(s => s.classId === c.id).length;
+        const grads = ['g1','g2','g3','g4','g5','g6','g7','g8'];
+        return `<button class="class-card ${grads[i % 8]}" onclick="nav('students',{classId:'${c.id}'})">
+          <div class="cn">${esc(c.name)}</div>
+          <div class="cs">${count} students · Sections ${esc(c.sections.join(', '))}</div>
+        </button>`;
+      }).join('')}
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-head"><h2>Manage</h2></div>
+    <div class="table-wrap">
+      <table class="tbl">
+        <thead><tr><th>Class</th><th>Sections</th><th>Students</th><th>Actions</th></tr></thead>
+        <tbody>
+          ${DB.classes.map(c => `<tr>
+            <td><b>${esc(c.name)}</b></td>
+            <td>${esc(c.sections.join(', '))}</td>
+            <td>${DB.students.filter(s => s.classId === c.id).length}</td>
+            <td class="row gap">
+              <button class="btn ghost xs" onclick="openClassForm('${c.id}')">Edit</button>
+              <button class="btn red xs" onclick="deleteClass('${c.id}')">Delete</button>
+            </td>
+          </tr>`).join('')}
+        </tbody>
+      </table>
+    </div>
+  </div>`;
+}
+
+function openClassForm(id){
+  if (!guard(false, 'admin')) return;
+  const c = id ? DB.classes.find(x => x.id === id) : null;
+  openModal(c ? 'Edit Class' : 'Add Class', `
+    <label class="fld mb">Class Name<input id="cfName" value="${c ? esc(c.name) : ''}" placeholder="e.g. Class 11"></label>
+    <label class="fld">Sections (comma separated)<input id="cfSecs" value="${c ? esc(c.sections.join(',')) : 'A,B'}" placeholder="A,B"></label>`,
+    `<button class="btn ghost" onclick="closeModal()">Cancel</button>
+     <button class="btn" onclick="saveClass('${id || ''}')">Save</button>`);
+}
+
+function saveClass(id){
+  const name = document.getElementById('cfName').value.trim();
+  const secs = document.getElementById('cfSecs').value.split(',').map(s => s.trim()).filter(Boolean);
+  if (!name) return toast('Class name is required', 'bad');
+  if (!secs.length) return toast('At least one section is required', 'bad');
+  if (id) {
+    const c = DB.classes.find(x => x.id === id);
+    c.name = name; c.sections = secs;
+  } else {
+    DB.classes.push({ id: uid('c'), name, sections: secs });
+  }
+  saveDB(); closeModal(); toast('Class saved', 'ok'); pageClasses();
+}
+
+function deleteClass(id){
+  if (!guard(false, 'admin')) return;
+  const count = DB.students.filter(s => s.classId === id).length;
+  if (count) return toast('Cannot delete: ' + count + ' students are enrolled.', 'bad');
+  if (!confirm('Delete class "' + clsName(id) + '"?')) return;
+  DB.classes = DB.classes.filter(c => c.id !== id);
+  saveDB(); toast('Class deleted', 'ok'); pageClasses();
+}
+
+/* ---------------------------------------------------------------------------
+   10. STUDENT MANAGEMENT
+--------------------------------------------------------------------------- */
+let stuQuery = '';
+
+function pageStudents(){
+  const filterClass = state.params.classId || 'all';
+  const q = stuQuery.trim().toLowerCase();
+  const list = DB.students
+    .filter(s => filterClass === 'all' || s.classId === filterClass)
+    .filter(s => !q || (s.name + ' ' + s.father + ' ' + s.roll).toLowerCase().includes(q))
+    .sort((a, b) => clsName(a.classId).localeCompare(clsName(b.classId)) || byRoll(a, b));
+
+  document.getElementById('view').innerHTML = `
+  ${pageHead('Student Management', 'Register, edit, search and view student records')}
+  <div class="card">
+    <div class="row wrap gap">
+      <input class="search grow" placeholder="Search by name, father or roll number" value="${esc(stuQuery)}"
+        oninput="stuQuery=this.value;pageStudents()">
+      <select class="search" onchange="nav('students',{classId:this.value})">
+        <option value="all" ${filterClass === 'all' ? 'selected' : ''}>All Classes</option>
+        ${DB.classes.map(c => `<option value="${c.id}" ${filterClass === c.id ? 'selected' : ''}>${esc(c.name)}</option>`).join('')}
+      </select>
+      <button class="btn sm" onclick="openStudentForm()">＋ Add Student</button>
+      <button class="btn ghost sm" onclick="printStudentList()">🖨️ Print List</button>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-head"><h2>Students</h2><span class="pill">${list.length} record(s)</span></div>
+    <div class="table-wrap">
+      <table class="tbl">
+        <thead><tr><th>Roll</th><th>Name</th><th>Father</th><th>Class</th><th>Section</th><th>Contact</th><th>Actions</th></tr></thead>
+        <tbody>
+          ${list.length ? list.map(s => `<tr>
+            <td>${esc(s.roll)}</td>
+            <td><b>${esc(s.name)}</b><div class="muted sm">${esc(s.gender)} · DOB ${esc(s.dob)}</div></td>
+            <td>${esc(s.father)}</td>
+            <td>${esc(clsName(s.classId))}</td>
+            <td>${esc(s.section)}</td>
+            <td>${esc(s.contact)}</td>
+            <td class="row gap">
+              <button class="btn ghost xs" onclick="viewStudent('${s.id}')">View</button>
+              <button class="btn ghost xs" onclick="openStudentForm('${s.id}')">Edit</button>
+              <button class="btn red xs" onclick="deleteStudent('${s.id}')">Delete</button>
+            </td>
+          </tr>`).join('') : `<tr><td colspan="7">${emptyState('No students found.')}</td></tr>`}
+        </tbody>
+      </table>
+    </div>
+  </div>`;
+}
+
+function openStudentForm(id){
+  if (!guard(false, 'admin')) return;
+  const s = id ? DB.students.find(x => x.id === id) : null;
+  openModal(s ? 'Edit Student' : 'Add Student', `
+    <div class="grid2">
+      <label class="fld">Full Name<input id="sfName" value="${s ? esc(s.name) : ''}"></label>
+      <label class="fld">Father's Name<input id="sfFather" value="${s ? esc(s.father) : ''}"></label>
+      <label class="fld">Roll Number<input id="sfRoll" type="number" value="${s ? esc(s.roll) : ''}"></label>
+      <label class="fld">Class<select id="sfClass">${classOptions(s ? s.classId : DB.classes[0].id)}</select></label>
+      <label class="fld">Section<input id="sfSection" value="${s ? esc(s.section) : 'A'}"></label>
+      <label class="fld">Date of Birth<input id="sfDob" type="date" value="${s ? esc(s.dob) : ''}"></label>
+      <label class="fld">Gender<select id="sfGender">
+        <option ${s && s.gender === 'Male' ? 'selected' : ''}>Male</option>
+        <option ${s && s.gender === 'Female' ? 'selected' : ''}>Female</option></select></label>
+      <label class="fld">Admission Date<input id="sfAdm" type="date" value="${s ? esc(s.admission) : todayISO()}"></label>
+      <label class="fld">Contact<input id="sfContact" value="${s ? esc(s.contact) : ''}"></label>
+      <label class="fld">Guardian<input id="sfGuardian" value="${s ? esc(s.guardian) : ''}"></label>
+    </div>
+    <label class="fld mt">Address<input id="sfAddress" value="${s ? esc(s.address) : ''}"></label>
+    <label class="fld mt">Photo URL (optional)<input id="sfPhoto" value="${s ? esc(s.photo || '') : ''}" placeholder="https://…"></label>`,
+    `<button class="btn ghost" onclick="closeModal()">Cancel</button>
+     <button class="btn" onclick="saveStudent('${id || ''}')">Save Student</button>`, true);
+}
+
+function saveStudent(id){
+  const v = k => (document.getElementById(k).value || '').trim();
+  const name = v('sfName'), father = v('sfFather'), roll = v('sfRoll');
+  if (!name) return toast('Student name is required', 'bad');
+  if (!father) return toast("Father's name is required", 'bad');
+  if (!roll) return toast('Roll number is required', 'bad');
+  const data = {
+    name, father, roll: Number(roll),
+    classId: document.getElementById('sfClass').value,
+    section: v('sfSection') || 'A',
+    dob: v('sfDob'), gender: document.getElementById('sfGender').value,
+    admission: v('sfAdm'), contact: v('sfContact'), address: v('sfAddress'),
+    guardian: v('sfGuardian'), photo: v('sfPhoto')
+  };
+  if (id) Object.assign(DB.students.find(x => x.id === id), data);
+  else DB.students.push(Object.assign({ id: uid('s') }, data));
+  saveDB(); closeModal(); toast('Student saved', 'ok'); pageStudents();
+}
+
+function deleteStudent(id){
+  if (!guard(false, 'admin')) return;
+  if (!confirm('Delete this student and all related records?')) return;
+  DB.students = DB.students.filter(s => s.id !== id);
+  DB.fees = DB.fees.filter(f => f.studentId !== id);
+  saveDB(); toast('Student deleted', 'ok'); pageStudents();
+}
+
+function viewStudent(id){
+  const s = DB.students.find(x => x.id === id);
+  if (!s) return;
+  const fees = DB.fees.filter(f => f.studentId === id);
+  const paid = fees.reduce((t, f) => t + (f.paid || 0), 0);
+  openModal('Student Profile', `
+    <div class="row gap mb">
+      <div class="logo" style="width:56px;height:56px;font-size:24px">${esc(s.name.charAt(0))}</div>
+      <div><h3>${esc(s.name)}</h3><div class="muted sm">S/O ${esc(s.father)} · Roll ${esc(s.roll)}</div></div>
+    </div>
+    <table class="tbl">
+      <tbody>
+        <tr><th>Class</th><td>${esc(clsName(s.classId))} (${esc(s.section)})</td></tr>
+        <tr><th>Date of Birth</th><td>${esc(s.dob || '—')}</td></tr>
+        <tr><th>Gender</th><td>${esc(s.gender)}</td></tr>
+        <tr><th>Admission Date</th><td>${esc(s.admission || '—')}</td></tr>
+        <tr><th>Contact</th><td>${esc(s.contact || '—')}</td></tr>
+        <tr><th>Address</th><td>${esc(s.address || '—')}</td></tr>
+        <tr><th>Guardian</th><td>${esc(s.guardian || '—')}</td></tr>
+        <tr><th>Total Fees Paid</th><td>${money(paid)}</td></tr>
+      </tbody>
+    </table>`,
+    `<button class="btn ghost" onclick="closeModal()">Close</button>
+     <button class="btn" onclick="printStudentCard('${s.id}')">🖨️ Print Profile</button>`);
+}
+
+function printStudentCard(id){
+  const s = DB.students.find(x => x.id === id);
+  if (!s) return;
+  const body = `<table><tbody>
+    <tr><th style="width:35%">Student Name</th><td>${esc(s.name)}</td></tr>
+    <tr><th>Father's Name</th><td>${esc(s.father)}</td></tr>
+    <tr><th>Roll Number</th><td>${esc(s.roll)}</td></tr>
+    <tr><th>Class / Section</th><td>${esc(clsName(s.classId))} — ${esc(s.section)}</td></tr>
+    <tr><th>Date of Birth</th><td>${esc(s.dob || '—')}</td></tr>
+    <tr><th>Gender</th><td>${esc(s.gender)}</td></tr>
+    <tr><th>Admission Date</th><td>${esc(s.admission || '—')}</td></tr>
+    <tr><th>Contact</th><td>${esc(s.contact || '—')}</td></tr>
+    <tr><th>Address</th><td>${esc(s.address || '—')}</td></tr>
+    <tr><th>Guardian</th><td>${esc(s.guardian || '—')}</td></tr>
+  </tbody></table>`;
+  printDoc('Student Profile Record', body, 'Generated on ' + todayISO());
+}
+
+function printStudentList(){
+  const body = `<table><thead><tr><th>#</th><th>Roll</th><th>Name</th><th>Father</th><th>Class</th><th>Section</th><th>Contact</th></tr></thead><tbody>
+    ${DB.students.slice(0, 200).map((s, i) => `<tr><td>${i + 1}</td><td>${esc(s.roll)}</td><td>${esc(s.name)}</td>
+      <td>${esc(s.father)}</td><td>${esc(clsName(s.classId))}</td><td>${esc(s.section)}</td><td>${esc(s.contact)}</td></tr>`).join('')}
+  </tbody></table>`;
+  printDoc('Student List', body, 'Total: ' + DB.students.length + ' students');
+}
+
+/* ---------------------------------------------------------------------------
+   11. RESULTS (TEST / EXAM)
+--------------------------------------------------------------------------- */
+let resFilter = { period: 'month', classId: 'all', subject: 'all', q: '' };
+
+function pageResults(kind){
+  const title = kind === 'exam' ? 'Exam Results' : 'Test Results';
+  const subjects = [...new Set(DB.tests.map(t => t.subject))];
+  const rows = [];
+
+  DB.tests.filter(t => t.kind === kind).forEach(t => {
+    if (resFilter.classId !== 'all' && t.classId !== resFilter.classId) return;
+    if (resFilter.subject !== 'all' && t.subject !== resFilter.subject) return;
+    if (!inRange(t.date, resFilter.period)) return;
+    Object.entries(t.records || {}).forEach(([sid, r]) => {
+      const s = DB.students.find(x => x.id === sid);
+      if (!s) return;
+      const q = resFilter.q.trim().toLowerCase();
+      if (q && !(s.name.toLowerCase().includes(q) || String(s.roll).includes(q))) return;
+      const obtained = r.absent ? 0 : (Number(r.theory || 0) + Number(r.practical || 0));
+      const total = Number(t.total || 0) + Number(t.practicalMax || 0);
+      const pct = total ? (obtained / total) * 100 : 0;
+      rows.push({ s, t, obtained, total, pct, absent: r.absent });
+    });
+  });
+
+  document.getElementById('view').innerHTML = `
+  ${pageHead(title, 'Filter by period, class and subject — print result cards and lists')}
+  <div class="card">
+    <div class="grid3">
+      <label class="fld">Period
+        <select onchange="resFilter.period=this.value;pageResults('${kind}')">
+          ${[['day','Today'],['week','This Week'],['month','This Month'],['year','This Year'],['all','All Time']]
+            .map(([v,l]) => `<option value="${v}" ${resFilter.period === v ? 'selected' : ''}>${l}</option>`).join('')}
+        </select>
+      </label>
+      <label class="fld">Class
+        <select onchange="resFilter.classId=this.value;pageResults('${kind}')">
+          <option value="all" ${resFilter.classId === 'all' ? 'selected' : ''}>All Classes</option>
+          ${classOptions(resFilter.classId)}
+        </select>
+      </label>
+      <label class="fld">Subject
+        <select onchange="resFilter.subject=this.value;pageResults('${kind}')">
+          <option value="all" ${resFilter.subject === 'all' ? 'selected' : ''}>All Subjects</option>
+          ${subjects.map(s => `<option ${resFilter.subject === s ? 'selected' : ''}>${esc(s)}</option>`).join('')}
+        </select>
+      </label>
+    </div>
+    <div class="row wrap gap mt">
+      <input class="search grow" placeholder="Search by student name or roll number" value="${esc(resFilter.q)}"
+        oninput="resFilter.q=this.value;pageResults('${kind}')">
+      <button class="btn sm" onclick="nav('marks',{kind:'${kind}'})">📝 Enter / Update Marks</button>
+      <button class="btn ghost sm" onclick="printResultsList('${kind}')">🖨️ Print Results</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h2>Result Records</h2><span class="pill">${rows.length} record(s)</span></div>
+    <div class="table-wrap">
+      <table class="tbl">
+        <thead><tr><th>Student</th><th>Class</th><th>Assessment</th><th>Date</th><th>Marks</th><th>Percentage</th><th>Grade</th><th>Status</th><th></th></tr></thead>
+        <tbody>
+          ${rows.length ? rows.map((r, i) => `<tr>
+            <td><b>${esc(r.s.name)}</b><div class="muted sm">S/O ${esc(r.s.father)} · Roll ${esc(r.s.roll)}</div></td>
+            <td>${esc(clsName(r.s.classId))}</td>
+            <td>${esc(r.t.title)}<div class="muted sm">${esc(r.t.subject)}</div></td>
+            <td>${esc(r.t.date)}</td>
+            <td>${r.absent ? '<span class="pill bad">Absent</span>' : esc(r.obtained) + ' / ' + esc(r.total)}</td>
+            <td>${ringHTML(r.pct)}</td>
+            <td><b>${grade(r.pct)}</b></td>
+            <td>${r.pct >= 40 && !r.absent ? '<span class="pill ok">Pass</span>' : '<span class="pill bad">Fail</span>'}</td>
+            <td><button class="btn ghost xs" onclick="printResultCard('${r.t.id}','${r.s.id}')">Card</button></td>
+          </tr>`).join('') : `<tr><td colspan="9">${emptyState('No results match the selected filters.')}</td></tr>`}
+        </tbody>
+      </table>
+    </div>
+  </div>`;
+}
+
+function printResultsList(kind){
+  const rows = [];
+  DB.tests.filter(t => t.kind === kind).forEach(t => {
+    if (resFilter.classId !== 'all' && t.classId !== resFilter.classId) return;
+    if (!inRange(t.date, resFilter.period)) return;
+    Object.entries(t.records || {}).forEach(([sid, r]) => {
+      const s = DB.students.find(x => x.id === sid);
+      if (!s) return;
+      const obtained = r.absent ? 0 : Number(r.theory || 0) + Number(r.practical || 0);
+      const total = Number(t.total || 0) + Number(t.practicalMax || 0);
+      rows.push({ s, t, obtained, total, pct: total ? obtained / total * 100 : 0 });
+    });
+  });
+  const body = `<table><thead><tr><th>#</th><th>Student</th><th>Father</th><th>Class</th><th>Assessment</th><th>Obtained</th><th>Total</th><th>%</th><th>Grade</th></tr></thead><tbody>
+    ${rows.map((r, i) => `<tr><td>${i + 1}</td><td>${esc(r.s.name)}</td><td>${esc(r.s.father)}</td>
+      <td>${esc(clsName(r.s.classId))}</td><td>${esc(r.t.title)}</td><td>${r.obtained}</td><td>${r.total}</td>
+      <td>${Math.round(r.pct)}%</td><td>${grade(r.pct)}</td></tr>`).join('')}
+  </tbody></table>`;
+  printDoc((kind === 'exam' ? 'Examination' : 'Test') + ' Results', body, 'Period: ' + resFilter.period);
+}
+
+function printResultCard(testId, studentId){
+  const t = DB.tests.find(x => x.id === testId);
+  const s = DB.students.find(x => x.id === studentId);
+  if (!t || !s) return;
+  const r = t.records[studentId] || {};
+  const obtained = r.absent ? 0 : Number(r.theory || 0) + Number(r.practical || 0);
+  const total = Number(t.total || 0) + Number(t.practicalMax || 0);
+  const pct = total ? obtained / total * 100 : 0;
+  const body = `<table><tbody>
+    <tr><th style="width:35%">Student</th><td>${esc(s.name)}</td></tr>
+    <tr><th>Father's Name</th><td>${esc(s.father)}</td></tr>
+    <tr><th>Class</th><td>${esc(clsName(s.classId))} (${esc(s.section)})</td></tr>
+    <tr><th>Roll Number</th><td>${esc(s.roll)}</td></tr>
+    <tr><th>Assessment</th><td>${esc(t.title)} — ${esc(t.subject)}</td></tr>
+    <tr><th>Date</th><td>${esc(t.date)}</td></tr>
+    <tr><th>Theory Marks</th><td>${r.absent ? '—' : esc(r.theory || 0)} / ${esc(t.total)}</td></tr>
+    <tr><th>Practical Marks</th><td>${r.absent ? '—' : esc(r.practical || 0)} / ${esc(t.practicalMax || 0)}</td></tr>
+    <tr><th>Total Marks</th><td><b>${r.absent ? 'Absent' : obtained + ' / ' + total}</b></td></tr>
+    <tr><th>Percentage</th><td><b>${Math.round(pct)}%</b></td></tr>
+    <tr><th>Grade</th><td><b>${grade(pct)}</b></td></tr>
+    <tr><th>Status</th><td><b>${pct >= 40 && !r.absent ? 'PASS' : 'FAIL'}</b></td></tr>
+  </tbody></table>`;
+  printDoc('Student Result Card', body, clsName(s.classId) + ' — ' + t.title);
+}
+
+/* ---------------------------------------------------------------------------
+   12. SUBJECT-WISE MARKS MANAGEMENT
+--------------------------------------------------------------------------- */
+const mkState = { classId: null, subject: 'English', kind: 'test', testId: null, tab: 'pending', q: '' };
+
+function pageMarks(){
+  if (state.params.kind) mkState.kind = state.params.kind;
+  if (!mkState.classId) mkState.classId = DB.classes[0].id;
+
+  const tests = DB.tests.filter(t => t.classId === mkState.classId && t.subject === mkState.subject && t.kind === mkState.kind);
+  if (!tests.find(t => t.id === mkState.testId)) mkState.testId = tests[0] ? tests[0].id : null;
+  const test = tests.find(t => t.id === mkState.testId) || null;
+
+  const students = DB.students.filter(s => s.classId === mkState.classId)
+    .filter(s => {
+      const q = mkState.q.trim().toLowerCase();
+      return !q || s.name.toLowerCase().includes(q) || String(s.roll).includes(q);
+    }).sort(byRoll);
+
+  const submitted = students.filter(s => test && test.records[s.id]).length;
+  const pending = students.length - submitted;
+  const shown = mkState.tab === 'pending'
+    ? students.filter(s => !test || !test.records[s.id])
+    : students.filter(s => test && test.records[s.id]);
+
+  document.getElementById('view').innerHTML = `
+  ${pageHead('Subject-Wise Marks', 'Enter theory & practical marks, then submit the class result')}
+  <div class="card">
+    <div class="grid3">
+      <label class="fld">Class
+        <select onchange="mkState.classId=this.value;mkState.testId=null;pageMarks()">${classOptions(mkState.classId)}</select>
+      </label>
+      <label class="fld">Subject
+        <select onchange="mkState.subject=this.value;mkState.testId=null;pageMarks()">
+          ${['English','Urdu','Mathematics','Islamiat','Science','Computer','Social Studies']
+            .map(s => `<option ${mkState.subject === s ? 'selected' : ''}>${s}</option>`).join('')}
+        </select>
+      </label>
+      <label class="fld">Type
+        <select onchange="mkState.kind=this.value;mkState.testId=null;pageMarks()">
+          <option value="test" ${mkState.kind === 'test' ? 'selected' : ''}>Test</option>
+          <option value="exam" ${mkState.kind === 'exam' ? 'selected' : ''}>Exam</option>
+        </select>
+      </label>
+    </div>
+    <div class="row wrap gap mt">
+      <label class="fld grow">Assessment
+        <select onchange="mkState.testId=this.value;pageMarks()">
+          ${tests.length ? tests.map(t => `<option value="${t.id}" ${t.id === mkState.testId ? 'selected' : ''}>${esc(t.title)} — ${esc(t.date)}</option>`).join('')
+            : '<option value="">No assessment yet</option>'}
+        </select>
+      </label>
+      <button class="btn sm" onclick="openNewTest()">＋ New Assessment</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="row wrap gap mb">
+      <div class="tabs">
+        <button class="${mkState.tab === 'pending' ? 'on' : ''}" onclick="mkState.tab='pending';pageMarks()">Pending (${pending})</button>
+        <button class="${mkState.tab === 'submitted' ? 'on' : ''}" onclick="mkState.tab='submitted';pageMarks()">Submitted (${submitted})</button>
+      </div>
+      <div class="spacer"></div>
+      <input class="search" placeholder="Search student…" value="${esc(mkState.q)}" oninput="mkState.q=this.value;pageMarks()">
+    </div>
+
+    ${test ? `
+    <div class="table-wrap">
+      <table class="tbl">
+        <thead><tr><th>Roll</th><th>Student</th><th>Father</th>
+          <th>Theory / ${esc(test.total)}</th>
+          <th>Practical / ${esc(test.practicalMax || 0)}</th>
+          <th>Absent</th><th>Result</th></tr></thead>
+        <tbody>
+          ${shown.length ? shown.map(s => {
+            const r = (test.records || {})[s.id] || {};
+            const obtained = r.absent ? 0 : Number(r.theory || 0) + Number(r.practical || 0);
+            const tot = Number(test.total) + Number(test.practicalMax || 0);
+            const pct = tot ? obtained / tot * 100 : 0;
+            return `<tr>
+              <td>${esc(s.roll)}</td>
+              <td><b>${esc(s.name)}</b></td>
+              <td>${esc(s.father)}</td>
+              <td><input id="th-${s.id}" type="number" min="0" max="${test.total}" value="${r.theory !== undefined ? r.theory : ''}" style="max-width:110px"></td>
+              <td><input id="pr-${s.id}" type="number" min="0" max="${test.practicalMax || 0}" value="${r.practical !== undefined ? r.practical : ''}" style="max-width:110px" ${test.practicalMax ? '' : 'disabled'}></td>
+              <td><input id="ab-${s.id}" type="checkbox" style="width:20px;height:20px" ${r.absent ? 'checked' : ''}></td>
+              <td>${r.absent ? '<span class="pill bad">Absent</span>' : (r.theory !== undefined ? `<span class="pill ${pct >= 40 ? 'ok' : 'bad'}">${Math.round(pct)}%</span>` : '<span class="pill">Pending</span>')}</td>
+            </tr>`;
+          }).join('') : `<tr><td colspan="7">${emptyState('No students in this tab.')}</td></tr>`}
+        </tbody>
+      </table>
+    </div>
+    <div class="row wrap gap mt">
+      <button class="btn green sm" onclick="saveMarks(false)">💾 Save Marks</button>
+      <button class="btn sm" onclick="saveMarks(true)">📤 Submit Class Result</button>
+      <button class="btn ghost sm" onclick="printSubjectMarks()">🖨️ Print Marks List</button>
+    </div>` : emptyState('Create an assessment to start entering marks.', '📝')}
+  </div>`;
+}
+
+function openNewTest(){
+  if (!guard(true)) return;
+  openModal('New Assessment', `
+    <div class="grid2">
+      <label class="fld">Title<input id="ntTitle" placeholder="e.g. English Test"></label>
+      <label class="fld">Date<input id="ntDate" type="date" value="${todayISO()}"></label>
+      <label class="fld">Total Theory Marks<input id="ntTotal" type="number" value="15"></label>
+      <label class="fld">Total Practical Marks<input id="ntPrac" type="number" value="0"></label>
+    </div>`,
+    `<button class="btn ghost" onclick="closeModal()">Cancel</button>
+     <button class="btn" onclick="createTest()">Create</button>`);
+}
+
+function createTest(){
+  const title = document.getElementById('ntTitle').value.trim();
+  const date = document.getElementById('ntDate').value || todayISO();
+  const total = Number(document.getElementById('ntTotal').value || 0);
+  const practicalMax = Number(document.getElementById('ntPrac').value || 0);
+  if (!title) return toast('Title is required', 'bad');
+  if (total <= 0 && practicalMax <= 0) return toast('Total marks must be greater than 0', 'bad');
+  const t = {
+    id: uid('te'), kind: mkState.kind, classId: mkState.classId, subject: mkState.subject,
+    title, date, total, practicalMax, records: {}
+  };
+  DB.tests.push(t);
+  mkState.testId = t.id;
+  saveDB(); closeModal(); toast('Assessment created', 'ok'); pageMarks();
+}
+
+function saveMarks(submit){
+  if (!guard(true)) return;
+  const t = DB.tests.find(x => x.id === mkState.testId);
+  if (!t) return toast('Select an assessment first', 'bad');
+  let error = false;
+  DB.students.filter(s => s.classId === mkState.classId).forEach(s => {
+    const th = document.getElementById('th-' + s.id);
+    const pr = document.getElementById('pr-' + s.id);
+    const ab = document.getElementById('ab-' + s.id);
+    if (!th) return;
+    if (ab.checked) { t.records[s.id] = { theory: 0, practical: 0, absent: true }; return; }
+    const theory = th.value === '' ? null : Number(th.value);
+    const practical = pr && pr.value !== '' ? Number(pr.value) : 0;
+    if (theory === null) { delete t.records[s.id]; return; }
+    if (theory > t.total || practical > (t.practicalMax || 0)) { error = true; return; }
+    t.records[s.id] = { theory, practical, absent: false };
+  });
+  saveDB();
+  if (error) toast('Some marks exceeded the maximum and were skipped', 'bad');
+  else toast(submit ? 'Class result submitted' : 'Marks saved', 'ok');
+  pageMarks();
+}
+
+function printSubjectMarks(){
+  const t = DB.tests.find(x => x.id === mkState.testId);
+  if (!t) return toast('Select an assessment first', 'bad');
+  const students = DB.students.filter(s => s.classId === mkState.classId).sort(byRoll);
+  const body = `<table><thead><tr><th>Roll</th><th>Student</th><th>Father</th><th>Theory</th><th>Practical</th><th>Total</th><th>Status</th></tr></thead><tbody>
+    ${students.map(s => {
+      const r = t.records[s.id] || {};
+      const obt = r.absent ? 0 : Number(r.theory || 0) + Number(r.practical || 0);
+      return `<tr><td>${esc(s.roll)}</td><td>${esc(s.name)}</td><td>${esc(s.father)}</td>
+        <td>${r.theory !== undefined ? esc(r.theory) : '—'}</td>
+        <td>${r.practical !== undefined ? esc(r.practical) : '—'}</td>
+        <td>${r.absent ? 'Absent' : (r.theory !== undefined ? obt : '—')}</td>
+        <td>${r.absent ? 'Absent' : (r.theory !== undefined ? 'Present' : 'Pending')}</td></tr>`;
+    }).join('')}
+  </tbody></table>`;
+  printDoc('Subject-Wise Marks List', body,
+    `${clsName(mkState.classId)} — ${mkState.subject} — ${t.title} (${t.date})`);
+}
+
+/* ---------------------------------------------------------------------------
+   13. SCHOOL DIARY
+--------------------------------------------------------------------------- */
+const diaryState = { date: todayISO(), subject: 'English' };
+
+function pageDiary(){
+  const classId = state.params.classId;
+
+  if (!classId) {
+    document.getElementById('view').innerHTML = `
+    ${pageHead('School Diary', 'Select a class to view or add homework')}
+    <div class="card">
+      <div class="card-head"><h2>Classes</h2></div>
+      <div class="class-grid">
+        ${DB.classes.map((c, i) => {
+          const grads = ['g1','g2','g3','g4','g5','g6','g7','g8'];
+          const n = DB.diary.filter(d => d.classId === c.id).length;
+          return `<button class="class-card ${grads[i % 8]}" onclick="nav('diary',{classId:'${c.id}'})">
+            <div class="cn">${esc(c.name)}</div><div class="cs">${n} diary entries</div></button>`;
+        }).join('')}
+      </div>
+    </div>`;
+    return;
+  }
+
+  const cls = DB.classes.find(c => c.id === classId);
+  const entries = DB.diary.filter(d => d.classId === classId).sort((a, b) => b.date.localeCompare(a.date));
+
+  document.getElementById('view').innerHTML = `
+  ${pageHead('Diary — ' + cls.name, 'Daily homework, lesson details and notes')}
+  <div class="card">
+    <div class="card-head"><h2>New Diary Entry</h2><div class="spacer"></div>
+      <button class="btn ghost sm" onclick="nav('diary',{})">Change Class</button>
+      <button class="btn ghost sm" onclick="printDiary('${classId}')">🖨️ Print Diary</button>
+    </div>
+    <div class="grid3">
+      <label class="fld">Date<input type="date" id="dDate" value="${diaryState.date}"></label>
+      <label class="fld">Section
+        <select id="dSection">${cls.sections.map(s => `<option>${esc(s)}</option>`).join('')}</select>
+      </label>
+      <label class="fld">Subject
+        <select id="dSubject">${['English','Urdu','Mathematics','Islamiat','Science','Computer','Social Studies']
+          .map(s => `<option ${diaryState.subject === s ? 'selected' : ''}>${s}</option>`).join('')}</select>
+      </label>
+    </div>
+    <label class="fld mt">Homework<textarea id="dHomework" placeholder="Write today's homework…"></textarea></label>
+    <label class="fld mt">Lesson Details<input id="dLesson" placeholder="e.g. Unit 3 — Page 24"></label>
+    <label class="fld mt">Notes / Attachment (optional)<input id="dNotes" placeholder="e.g. worksheet.pdf or a short note"></label>
+    <div class="row gap mt">
+      <button class="btn green sm" onclick="saveDiary('${classId}')">💾 Save Entry</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h2>Previous Entries</h2><span class="pill">${entries.length}</span></div>
+    ${entries.length ? entries.map(d => `
+      <div class="att-row" style="align-items:flex-start">
+        <div class="att-info">
+          <div class="att-name">${esc(d.subject)} — ${esc(d.date)}</div>
+          <div class="att-sub" style="white-space:pre-wrap">${esc(d.homework)}</div>
+          <div class="att-sub">${d.lesson ? 'Lesson: ' + esc(d.lesson) : ''} ${d.notes ? ' · ' + esc(d.notes) : ''}</div>
+        </div>
+        <div class="row gap">
+          <button class="btn ghost xs" onclick="editDiary('${d.id}')">Edit</button>
+          <button class="btn red xs" onclick="deleteDiary('${d.id}','${classId}')">Delete</button>
+        </div>
+      </div>`).join('') : emptyState('No diary entries yet.', '📔')}
+  </div>`;
+}
+
+function saveDiary(classId){
+  if (!guard(true)) return;
+  const homework = document.getElementById('dHomework').value.trim();
+  if (!homework) return toast('Please write the homework first', 'bad');
+  DB.diary.push({
+    id: uid('d'), date: document.getElementById('dDate').value || todayISO(),
+    classId, section: document.getElementById('dSection').value,
+    subject: document.getElementById('dSubject').value,
+    homework, lesson: document.getElementById('dLesson').value.trim(),
+    notes: document.getElementById('dNotes').value.trim()
+  });
+  saveDB(); toast('Diary entry saved', 'ok'); pageDiary();
+}
+
+function editDiary(id){
+  if (!guard(true)) return;
+  const d = DB.diary.find(x => x.id === id);
+  if (!d) return;
+  openModal('Edit Diary Entry', `
+    <label class="fld mb">Homework<textarea id="edHw">${esc(d.homework)}</textarea></label>
+    <label class="fld">Lesson<input id="edLesson" value="${esc(d.lesson || '')}"></label>`,
+    `<button class="btn ghost" onclick="closeModal()">Cancel</button>
+     <button class="btn" onclick="confirmEditDiary('${id}')">Save</button>`);
+}
+function confirmEditDiary(id){
+  const d = DB.diary.find(x => x.id === id);
+  d.homework = document.getElementById('edHw').value.trim();
+  d.lesson = document.getElementById('edLesson').value.trim();
+  saveDB(); closeModal(); toast('Diary updated', 'ok'); pageDiary();
+}
+function deleteDiary(id, classId){
+  if (!guard(true)) return;
+  if (!confirm('Delete this diary entry?')) return;
+  DB.diary = DB.diary.filter(d => d.id !== id);
+  saveDB(); toast('Diary entry deleted', 'ok'); nav('diary', { classId });
+}
+
+function printDiary(classId){
+  const cls = DB.classes.find(c => c.id === classId);
+  const entries = DB.diary.filter(d => d.classId === classId);
+  const body = `<table><thead><tr><th>Date</th><th>Subject</th><th>Homework</th><th>Lesson</th><th>Notes</th></tr></thead><tbody>
+    ${entries.map(d => `<tr><td>${esc(d.date)}</td><td>${esc(d.subject)}</td><td>${esc(d.homework)}</td>
+      <td>${esc(d.lesson || '—')}</td><td>${esc(d.notes || '—')}</td></tr>`).join('')}
+  </tbody></table>`;
+  printDoc('School Diary — ' + cls.name, body, 'All recorded diary entries');
+}
+
+/* ---------------------------------------------------------------------------
+   14. FEE MANAGEMENT
+--------------------------------------------------------------------------- */
+const feeState = { month: new Date().toISOString().slice(0, 7), status: 'all', q: '' };
+
+function pageFees(){
+  const records = DB.fees.filter(f => f.month === feeState.month);
+  const collected = records.reduce((t, f) => t + (f.paid || 0), 0);
+  const outstanding = records.reduce((t, f) => t + Math.max(0, f.amount - (f.paid || 0)), 0);
+
+  const list = records
+    .map(f => Object.assign({}, f, { s: DB.students.find(s => s.id === f.studentId) }))
+    .filter(f => f.s)
+    .filter(f => feeState.status === 'all' || f.status === feeState.status)
+    .filter(f => {
+      const q = feeState.q.trim().toLowerCase();
+      return !q || (f.s.name + ' ' + f.s.roll + ' ' + clsName(f.s.classId)).toLowerCase().includes(q);
+    });
+
+  document.getElementById('view').innerHTML = `
+  ${pageHead('Fee Management', 'Monthly fees, dues, receipts and reports')}
+  <div class="stat-row">
+    <div class="stat g4"><div class="k">Collected (${esc(feeState.month)})</div><div class="v">${money(collected)}</div><div class="s">${records.filter(f => f.status === 'Paid').length} fully paid</div></div>
+    <div class="stat g3"><div class="k">Outstanding</div><div class="v">${money(outstanding)}</div><div class="s">${records.filter(f => f.status !== 'Paid').length} unpaid/partial</div></div>
+    <div class="stat g1"><div class="k">Fee Records</div><div class="v">${records.length}</div><div class="s">this month</div></div>
+  </div>
+
+  <div class="card">
+    <div class="grid3">
+      <label class="fld">Month<input type="month" value="${feeState.month}" onchange="feeState.month=this.value;pageFees()"></label>
+      <label class="fld">Status
+        <select onchange="feeState.status=this.value;pageFees()">
+          ${['all','Paid','Unpaid','Partial'].map(s => `<option value="${s}" ${feeState.status === s ? 'selected' : ''}>${s === 'all' ? 'All Statuses' : s}</option>`).join('')}
+        </select>
+      </label>
+      <label class="fld">Search<input class="search" placeholder="Student name or roll" value="${esc(feeState.q)}" oninput="feeState.q=this.value;pageFees()"></label>
+    </div>
+    <div class="row wrap gap mt">
+      <button class="btn sm" onclick="generateMonthlyFees()">⚙️ Generate Monthly Fees</button>
+      <button class="btn ghost sm" onclick="printFeeReport()">🖨️ Print Report</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h2>Fee Records</h2><span class="pill">${list.length}</span></div>
+    <div class="table-wrap">
+      <table class="tbl">
+        <thead><tr><th>Student</th><th>Class</th><th>Type</th><th>Amount</th><th>Paid</th><th>Balance</th><th>Status</th><th>Actions</th></tr></thead>
+        <tbody>
+          ${list.length ? list.map(f => `<tr>
+            <td><b>${esc(f.s.name)}</b><div class="muted sm">Roll ${esc(f.s.roll)}</div></td>
+            <td>${esc(clsName(f.s.classId))}</td>
+            <td>${esc(f.type)}</td>
+            <td>${money(f.amount)}</td>
+            <td>${money(f.paid)}</td>
+            <td>${money(Math.max(0, f.amount - f.paid))}</td>
+            <td><span class="pill ${f.status === 'Paid' ? 'ok' : f.status === 'Partial' ? 'warn' : 'bad'}">${esc(f.status)}</span></td>
+            <td class="row gap">
+              <button class="btn green xs" onclick="openPayment('${f.id}')">Collect</button>
+              <button class="btn ghost xs" onclick="printReceipt('${f.id}')">Receipt</button>
+            </td>
+          </tr>`).join('') : `<tr><td colspan="8">${emptyState('No fee records for this filter.')}</td></tr>`}
+        </tbody>
+      </table>
+    </div>
+  </div>`;
+}
+
+function generateMonthlyFees(){
+  if (!guard(false, 'admin')) return;
+  let created = 0;
+  DB.students.forEach(s => {
+    if (!DB.fees.find(f => f.studentId === s.id && f.month === feeState.month)) {
+      DB.fees.push({
+        id: uid('f'), studentId: s.id, month: feeState.month, type: 'Monthly Fee',
+        amount: 3500, paid: 0, status: 'Unpaid', date: '', method: 'Cash'
+      });
+      created++;
+    }
+  });
+  saveDB();
+  toast(created ? created + ' fee record(s) generated' : 'All records already exist', created ? 'ok' : '');
+  pageFees();
+}
+
+function openPayment(id){
+  if (!guard(true)) return;
+  const f = DB.fees.find(x => x.id === id);
+  if (!f) return;
+  const s = DB.students.find(x => x.id === f.studentId) || {};
+  const balance = Math.max(0, f.amount - f.paid);
+  openModal('Collect Fee — ' + (s.name || ''), `
+    <p class="muted sm">Balance: <b>${money(balance)}</b></p>
+    <div class="grid2">
+      <label class="fld">Amount Received<input id="payAmt" type="number" value="${balance}"></label>
+      <label class="fld">Method
+        <select id="payMethod"><option>Cash</option><option>Bank Transfer</option><option>Card</option><option>Online</option></select>
+      </label>
+      <label class="fld">Date<input id="payDate" type="date" value="${todayISO()}"></label>
+      <label class="fld">Discount / Scholarship<input id="payDisc" type="number" value="0"></label>
+    </div>`,
+    `<button class="btn ghost" onclick="closeModal()">Cancel</button>
+     <button class="btn green" onclick="confirmPayment('${id}')">Save Payment</button>`);
+}
+
+function confirmPayment(id){
+  const f = DB.fees.find(x => x.id === id);
+  const amt = Number(document.getElementById('payAmt').value || 0);
+  const disc = Number(document.getElementById('payDisc').value || 0);
+  if (amt <= 0 && disc <= 0) return toast('Enter a valid amount', 'bad');
+  f.paid = Math.min(f.amount, (f.paid || 0) + amt + disc);
+  f.date = document.getElementById('payDate').value || todayISO();
+  f.method = document.getElementById('payMethod').value;
+  f.status = f.paid >= f.amount ? 'Paid' : (f.paid > 0 ? 'Partial' : 'Unpaid');
+  saveDB(); closeModal(); toast('Payment recorded', 'ok'); pageFees();
+}
+
+function printReceipt(id){
+  const f = DB.fees.find(x => x.id === id);
+  if (!f) return;
+  const s = DB.students.find(x => x.id === f.studentId) || {};
+  const body = `<table><tbody>
+    <tr><th style="width:35%">Receipt No.</th><td>${esc(f.id.toUpperCase())}</td></tr>
+    <tr><th>Student</th><td>${esc(s.name || '—')}</td></tr>
+    <tr><th>Father's Name</th><td>${esc(s.father || '—')}</td></tr>
+    <tr><th>Class</th><td>${esc(clsName(s.classId))} (${esc(s.section || '')})</td></tr>
+    <tr><th>Fee Type</th><td>${esc(f.type)}</td></tr>
+    <tr><th>Month</th><td>${esc(f.month)}</td></tr>
+    <tr><th>Total Amount</th><td>${money(f.amount)}</td></tr>
+    <tr><th>Amount Paid</th><td><b>${money(f.paid)}</b></td></tr>
+    <tr><th>Balance</th><td>${money(Math.max(0, f.amount - f.paid))}</td></tr>
+    <tr><th>Payment Method</th><td>${esc(f.method)}</td></tr>
+    <tr><th>Payment Date</th><td>${esc(f.date || '—')}</td></tr>
+  </tbody></table>`;
+  printDoc('Fee Payment Receipt', body, 'Status: ' + f.status);
+}
+
+function printFeeReport(){
+  const records = DB.fees.filter(f => f.month === feeState.month);
+  const body = `<table><thead><tr><th>#</th><th>Student</th><th>Class</th><th>Amount</th><th>Paid</th><th>Balance</th><th>Status</th></tr></thead><tbody>
+    ${records.map((f, i) => {
+      const s = DB.students.find(x => x.id === f.studentId) || {};
+      return `<tr><td>${i + 1}</td><td>${esc(s.name || '—')}</td><td>${esc(clsName(s.classId))}</td>
+        <td>${f.amount}</td><td>${f.paid}</td><td>${Math.max(0, f.amount - f.paid)}</td><td>${esc(f.status)}</td></tr>`;
+    }).join('')}
+  </tbody></table>`;
+  printDoc('Fee Collection Report', body, 'Month: ' + feeState.month);
+}
+
+/* ---------------------------------------------------------------------------
+   15. TRANSACTIONS
+--------------------------------------------------------------------------- */
+function pageTransactions(){
+  const paid = DB.fees.filter(f => (f.paid || 0) > 0).slice().reverse();
+  const total = paid.reduce((t, f) => t + f.paid, 0);
+
+  document.getElementById('view').innerHTML = `
+  ${pageHead('Transactions', 'All received payments and printable receipts')}
+  <div class="stat-row">
+    <div class="stat g4"><div class="k">Total Received</div><div class="v">${money(total)}</div><div class="s">all time</div></div>
+    <div class="stat g2"><div class="k">Transactions</div><div class="v">${paid.length}</div><div class="s">payment records</div></div>
+    <div class="stat g5"><div class="k">This Month</div><div class="v">${money(paid.filter(f => f.month === new Date().toISOString().slice(0, 7)).reduce((t, f) => t + f.paid, 0))}</div><div class="s">collected</div></div>
+  </div>
+  <div class="card">
+    <div class="card-head"><h2>Payment Ledger</h2><div class="spacer"></div>
+      <button class="btn ghost sm" onclick="printTransactions()">🖨️ Print Ledger</button>
+    </div>
+    <div class="table-wrap">
+      <table class="tbl">
+        <thead><tr><th>Receipt</th><th>Student</th><th>Class</th><th>Type</th><th>Month</th><th>Paid</th><th>Method</th><th>Date</th><th></th></tr></thead>
+        <tbody>
+          ${paid.length ? paid.map(f => {
+            const s = DB.students.find(x => x.id === f.studentId) || {};
+            return `<tr>
+              <td>${esc(f.id.toUpperCase())}</td>
+              <td><b>${esc(s.name || '—')}</b></td>
+              <td>${esc(clsName(s.classId))}</td>
+              <td>${esc(f.type)}</td>
+              <td>${esc(f.month)}</td>
+              <td>${money(f.paid)}</td>
+              <td>${esc(f.method)}</td>
+              <td>${esc(f.date || '—')}</td>
+              <td><button class="btn ghost xs" onclick="printReceipt('${f.id}')">Receipt</button></td>
+            </tr>`;
+          }).join('') : `<tr><td colspan="9">${emptyState('No transactions recorded yet.')}</td></tr>`}
+        </tbody>
+      </table>
+    </div>
+  </div>`;
+}
+
+function printTransactions(){
+  const paid = DB.fees.filter(f => (f.paid || 0) > 0);
+  const body = `<table><thead><tr><th>#</th><th>Receipt</th><th>Student</th><th>Class</th><th>Month</th><th>Amount</th><th>Method</th><th>Date</th></tr></thead><tbody>
+    ${paid.map((f, i) => {
+      const s = DB.students.find(x => x.id === f.studentId) || {};
+      return `<tr><td>${i + 1}</td><td>${esc(f.id.toUpperCase())}</td><td>${esc(s.name || '—')}</td>
+        <td>${esc(clsName(s.classId))}</td><td>${esc(f.month)}</td><td>${f.paid}</td>
+        <td>${esc(f.method)}</td><td>${esc(f.date || '—')}</td></tr>`;
+    }).join('')}
+  </tbody></table>`;
+  printDoc('Transaction Ledger', body, 'Total received: ' + money(paid.reduce((t, f) => t + f.paid, 0)));
+}
+
+/* ---------------------------------------------------------------------------
+   16. TIMETABLE
+--------------------------------------------------------------------------- */
+const ttState = { classId: null, view: 'class' };
+
+function pageTimetable(){
+  if (!ttState.classId) ttState.classId = DB.classes[0].id;
+  const days = ['Monday','Tuesday','Wednesday','Thursday','Friday'];
+  const entries = DB.timetable.filter(t => t.classId === ttState.classId);
+
+  document.getElementById('view').innerHTML = `
+  ${pageHead('Timetable', 'Class-wise schedule with teacher conflict checking')}
+  <div class="card">
+    <div class="grid2">
+      <label class="fld">Class
+        <select onchange="ttState.classId=this.value;pageTimetable()">${classOptions(ttState.classId)}</select>
+      </label>
+      <label class="fld">Teacher-wise view
+        <select onchange="showTeacherTimetable(this.value)">
+          <option value="">— Select teacher —</option>
+          ${DB.teachers.map(t => `<option value="${t.id}">${esc(t.name)}</option>`).join('')}
+        </select>
+      </label>
+    </div>
+    <div class="row wrap gap mt">
+      <button class="btn sm" onclick="openTimetableForm()">＋ Add Period</button>
+      <button class="btn ghost sm" onclick="printTimetable()">🖨️ Print Timetable</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h2>${esc(clsName(ttState.classId))} — Weekly Schedule</h2></div>
+    <div class="table-wrap">
+      <table class="tbl">
+        <thead><tr><th>Day</th><th>Period</th><th>Time</th><th>Subject</th><th>Teacher</th><th>Room</th><th></th></tr></thead>
+        <tbody>
+          ${entries.length ? days.map(day => {
+            const list = entries.filter(e => e.day === day).sort((a, b) => a.period - b.period);
+            return list.map((e, i) => `<tr>
+              <td>${i === 0 ? '<b>' + day + '</b>' : ''}</td>
+              <td>${e.period}</td>
+              <td>${esc(e.start)} – ${esc(e.end)}</td>
+              <td>${esc(e.subject)}</td>
+              <td>${esc(e.teacher)}</td>
+              <td>${esc(e.room)}</td>
+              <td><button class="btn red xs" onclick="deleteTimetableEntry('${e.id}')">Remove</button></td>
+            </tr>`).join('');
+          }).join('') : `<tr><td colspan="7">${emptyState('No periods scheduled for this class.')}</td></tr>`}
+        </tbody>
+      </table>
+    </div>
+  </div>`;
+}
+
+function showTeacherTimetable(teacherId){
+  if (!teacherId) return;
+  const t = DB.teachers.find(x => x.id === teacherId);
+  const entries = DB.timetable.filter(e => e.teacher === t.name);
+  const body = `<table><thead><tr><th>Day</th><th>Period</th><th>Time</th><th>Class</th><th>Subject</th><th>Room</th></tr></thead><tbody>
+    ${entries.map(e => `<tr><td>${esc(e.day)}</td><td>${e.period}</td><td>${esc(e.start)} – ${esc(e.end)}</td>
+      <td>${esc(clsName(e.classId))}</td><td>${esc(e.subject)}</td><td>${esc(e.room)}</td></tr>`).join('')}
+  </tbody></table>`;
+  openModal('Timetable — ' + t.name, entries.length ? body : emptyState('No periods assigned.'),
+    `<button class="btn" onclick="printDoc('Teacher Timetable — ${esc(t.name)}', document.querySelector('.modal-body').innerHTML, 'Teacher-wise schedule')">🖨️ Print</button>
+     <button class="btn ghost" onclick="closeModal()">Close</button>`, true);
+}
+
+function openTimetableForm(){
+  if (!guard(false, 'admin')) return;
+  openModal('Add Timetable Period', `
+    <div class="grid2">
+      <label class="fld">Day<select id="ttDay">${['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+        .map(d => `<option>${d}</option>`).join('')}</select></label>
+      <label class="fld">Period Number<input id="ttPeriod" type="number" value="1" min="1" max="12"></label>
+      <label class="fld">Start Time<input id="ttStart" type="time" value="08:00"></label>
+      <label class="fld">End Time<input id="ttEnd" type="time" value="08:45"></label>
+      <label class="fld">Subject
+        <select id="ttSubject">${['English','Urdu','Mathematics','Islamiat','Science','Computer','Social Studies','Physics','Chemistry','Biology']
+          .map(s => `<option>${s}</option>`).join('')}</select></label>
+      <label class="fld">Teacher
+        <select id="ttTeacher">${DB.teachers.map(t => `<option>${esc(t.name)}</option>`).join('')}</select></label>
+      <label class="fld">Room<input id="ttRoom" value="R-1"></label>
+    </div>`,
+    `<button class="btn ghost" onclick="closeModal()">Cancel</button>
+     <button class="btn" onclick="saveTimetableEntry()">Add Period</button>`);
+}
+
+function saveTimetableEntry(){
+  const day = document.getElementById('ttDay').value;
+  const start = document.getElementById('ttStart').value;
+  const end = document.getElementById('ttEnd').value;
+  const teacher = document.getElementById('ttTeacher').value;
+  const period = Number(document.getElementById('ttPeriod').value);
+
+  if (end <= start) return toast('End time must be after start time', 'bad');
+
+  const clash = DB.timetable.some(e =>
+    e.day === day && e.teacher === teacher && !(end <= e.start || start >= e.end));
+  if (clash) return toast('Conflict: ' + teacher + ' is already assigned at this time.', 'bad');
+
+  const classClash = DB.timetable.some(e =>
+    e.day === day && e.classId === ttState.classId && !(end <= e.start || start >= e.end));
+  if (classClash) return toast('Conflict: this class already has a period at this time.', 'bad');
+
+  DB.timetable.push({
+    id: uid('tt'), classId: ttState.classId, day, period, start, end,
+    subject: document.getElementById('ttSubject').value,
+    teacher, room: document.getElementById('ttRoom').value.trim() || 'R-1'
+  });
+  saveDB(); closeModal(); toast('Period added', 'ok'); pageTimetable();
+}
+
+function deleteTimetableEntry(id){
+  if (!guard(false, 'admin')) return;
+  if (!confirm('Remove this period?')) return;
+  DB.timetable = DB.timetable.filter(e => e.id !== id);
+  saveDB(); toast('Period removed', 'ok'); pageTimetable();
+}
+
+function printTimetable(){
+  const days = ['Monday','Tuesday','Wednesday','Thursday','Friday'];
+  const entries = DB.timetable.filter(t => t.classId === ttState.classId);
+  const body = `<table><thead><tr><th>Day</th><th>Period</th><th>Time</th><th>Subject</th><th>Teacher</th><th>Room</th></tr></thead><tbody>
+    ${days.map(day => entries.filter(e => e.day === day).sort((a, b) => a.period - b.period)
+      .map(e => `<tr><td>${esc(e.day)}</td><td>${e.period}</td><td>${esc(e.start)} – ${esc(e.end)}</td>
+        <td>${esc(e.subject)}</td><td>${esc(e.teacher)}</td><td>${esc(e.room)}</td></tr>`).join('')).join('')}
+  </tbody></table>`;
+  printDoc('Class Timetable — ' + clsName(ttState.classId), body, 'Weekly schedule');
+}
+
+/* ---------------------------------------------------------------------------
+   17. TEACHER DASHBOARD
+--------------------------------------------------------------------------- */
+function pageTeacher(){
+  const teacher = DB.teachers.find(t => t.id === (state.params.teacherId || DB.teachers[0].id)) || DB.teachers[0];
+  const periods = DB.timetable.filter(e => e.teacher === teacher.name);
+  const classes = [...new Set(periods.map(p => p.classId))];
+  const subjects = [...new Set(periods.map(p => p.subject))];
+  const myLeaves = DB.leaves.filter(l => l.teacherId === teacher.id);
+  const todayRec = DB.checkins.find(c => c.teacherId === teacher.id && c.date === todayISO());
+  const diaryToday = DB.diary.filter(d => d.date === todayISO()).length;
+
+  const tasks = [
+    { t: 'Mark attendance for today', done: DB.attendance.some(a => a.date === todayISO()) },
+    { t: 'Add diary homework', done: diaryToday > 0 },
+    { t: 'Enter pending marks', done: DB.tests.some(t => Object.keys(t.records || {}).length > 0) },
+    { t: 'Check-in for duty', done: !!todayRec }
+  ];
+
+  document.getElementById('view').innerHTML = `
+  ${pageHead('Teacher Dashboard', 'Classes, tasks and quick actions')}
+  <div class="card">
+    <div class="row wrap gap">
+      <label class="fld grow">Signed in as
+        <select onchange="nav('teacher',{teacherId:this.value})">
+          ${DB.teachers.map(t => `<option value="${t.id}" ${t.id === teacher.id ? 'selected' : ''}>${esc(t.name)}</option>`).join('')}
+        </select>
+      </label>
+      <span class="pill ${todayRec ? 'ok' : 'bad'}">${todayRec ? 'Checked in at ' + esc(todayRec.in) : 'Not checked in today'}</span>
+    </div>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat g1"><div class="k">Assigned Classes</div><div class="v">${classes.length}</div><div class="s">${esc(teacher.subject)}</div></div>
+    <div class="stat g2"><div class="k">Weekly Periods</div><div class="v">${periods.length}</div><div class="s">timetable slots</div></div>
+    <div class="stat g4"><div class="k">Leave Requests</div><div class="v">${myLeaves.length}</div><div class="s">${myLeaves.filter(l => l.status === 'Pending').length} pending</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h2>Quick Actions</h2></div>
+    <div class="row wrap gap">
+      <button class="btn green sm" onclick="nav('attendance',{})">✅ Take Attendance</button>
+      <button class="btn sm" onclick="nav('marks',{})">📝 Upload Marks</button>
+      <button class="btn sm" onclick="nav('marks',{})">🧪 Create Test</button>
+      <button class="btn ghost sm" onclick="nav('lectures',{})">🎥 Upload Lecture</button>
+      <button class="btn ghost sm" onclick="nav('diary',{})">📔 Add Homework</button>
+      <button class="btn orange sm" onclick="openLeaveForm()">📩 Request Leave</button>
+      <button class="btn ghost sm" onclick="nav('reports',{})">🖨️ Print Reports</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h2>Pending Tasks</h2></div>
+    ${tasks.map(x => `<div class="att-row">
+      <div class="att-info"><div class="att-name">${esc(x.t)}</div></div>
+      <span class="pill ${x.done ? 'ok' : 'warn'}">${x.done ? 'Completed' : 'Pending'}</span>
+    </div>`).join('')}
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h2>My Classes & Subjects</h2></div>
+    <div class="table-wrap">
+      <table class="tbl">
+        <thead><tr><th>Class</th><th>Subject</th><th>Day</th><th>Time</th><th>Room</th></tr></thead>
+        <tbody>
+          ${periods.length ? periods.map(p => `<tr>
+            <td>${esc(clsName(p.classId))}</td><td>${esc(p.subject)}</td>
+            <td>${esc(p.day)}</td><td>${esc(p.start)} – ${esc(p.end)}</td><td>${esc(p.room)}</td>
+          </tr>`).join('') : `<tr><td colspan="5">${emptyState('No periods assigned yet.')}</td></tr>`}
+        </tbody>
+      </table>
+    </div>
+  </div>`;
+}
+
+/* ---------------------------------------------------------------------------
+   18. APPLICATIONS
+--------------------------------------------------------------------------- */
+const appFilter = { type: 'all', status: 'all', q: '' };
+
+function pageApplications(){
+  const list = DB.applications
+    .filter(a => appFilter.type === 'all' || a.type === appFilter.type)
+    .filter(a => appFilter.status === 'all' || a.status === appFilter.status)
+    .filter(a => {
+      const q = appFilter.q.trim().toLowerCase();
+      return !q || (a.name + ' ' + a.subject + ' ' + a.body).toLowerCase().includes(q);
+    })
+    .slice().reverse();
+
+  document.getElementById('view').innerHTML = `
+  ${pageHead('Applications', 'Student requests, teacher requests and leave applications')}
+  <div class="card">
+    <div class="grid3">
+      <label class="fld">Type
+        <select onchange="appFilter.type=this.value;pageApplications()">
+          ${['all','Student','Teacher','Leave'].map(t => `<option value="${t}" ${appFilter.type === t ? 'selected' : ''}>${t === 'all' ? 'All Types' : t}</option>`).join('')}
+        </select>
+      </label>
+      <label class="fld">Status
+        <select onchange="appFilter.status=this.value;pageApplications()">
+          ${['all','Pending','Accepted','Rejected'].map(s => `<option value="${s}" ${appFilter.status === s ? 'selected' : ''}>${s === 'all' ? 'All Statuses' : s}</option>`).join('')}
+        </select>
+      </label>
+      <label class="fld">Search<input class="search" placeholder="Name or subject" value="${esc(appFilter.q)}" oninput="appFilter.q=this.value;pageApplications()"></label>
+    </div>
+    <div class="row wrap gap mt">
+      <button class="btn sm" onclick="openApplicationForm()">＋ New Application</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h2>Applications</h2><span class="pill">${list.length}</span></div>
+    <div class="table-wrap">
+      <table class="tbl">
+        <thead><tr><th>Type</th><th>Applicant</th><th>Subject</th><th>Date</th><th>Status</th><th>Comments</th><th>Actions</th></tr></thead>
+        <tbody>
+          ${list.length ? list.map(a => `<tr>
+            <td><span class="pill info">${esc(a.type)}</span></td>
+            <td><b>${esc(a.name)}</b></td>
+            <td>${esc(a.subject)}<div class="muted sm">${esc(a.body)}</div></td>
+            <td>${esc(a.date)}</td>
+            <td><span class="pill ${a.status === 'Accepted' ? 'ok' : a.status === 'Rejected' ? 'bad' : 'warn'}">${esc(a.status)}</span></td>
+            <td class="muted sm">${esc(a.comment || '—')}</td>
+            <td class="row gap">
+              ${a.status === 'Pending' ? `
+                <button class="btn green xs" onclick="reviewApplication('${a.id}','Accepted')">Approve</button>
+                <button class="btn red xs" onclick="reviewApplication('${a.id}','Rejected')">Reject</button>` :
+                `<button class="btn ghost xs" onclick="reviewApplication('${a.id}','Pending')">Reopen</button>`}
+            </td>
+          </tr>`).join('') : `<tr><td colspan="7">${emptyState('No applications match the filters.')}</td></tr>`}
+        </tbody>
+      </table>
+    </div>
+  </div>`;
+}
+
+function openApplicationForm(){
+  openModal('New Application', `
+    <div class="grid2">
+      <label class="fld">Type<select id="apType"><option>Student</option><option>Teacher</option><option>Leave</option></select></label>
+      <label class="fld">Applicant Name<input id="apName" placeholder="Full name"></label>
+    </div>
+    <label class="fld mt">Subject<input id="apSubject" placeholder="e.g. Fee concession request"></label>
+    <label class="fld mt">Details<textarea id="apBody" placeholder="Describe the request…"></textarea></label>`,
+    `<button class="btn ghost" onclick="closeModal()">Cancel</button>
+     <button class="btn" onclick="submitApplication()">Submit</button>`);
+}
+
+function submitApplication(){
+  const name = document.getElementById('apName').value.trim();
+  const subject = document.getElementById('apSubject').value.trim();
+  if (!name || !subject) return toast('Name and subject are required', 'bad');
+  DB.applications.push({
+    id: uid('ap'), type: document.getElementById('apType').value, name, subject,
+    body: document.getElementById('apBody').value.trim(), date: todayISO(), status: 'Pending', comment: ''
+  });
+  saveDB(); closeModal(); toast('Application submitted', 'ok'); pageApplications();
+}
+
+function reviewApplication(id, status){
+  if (!guard(false, 'admin')) return;
+  const a = DB.applications.find(x => x.id === id);
+  if (!a) return;
+  a.status = status;
+  a.comment = status === 'Accepted' ? 'Approved by Admin' : status === 'Rejected' ? 'Rejected by Admin' : '';
+  saveDB(); toast('Application ' + status.toLowerCase(), status === 'Rejected' ? 'bad' : 'ok');
+  pageApplications();
+}
+
+/* ---------------------------------------------------------------------------
+   19. LECTURE UPLOAD
+--------------------------------------------------------------------------- */
+function pageLectures(){
+  const list = DB.lectures.slice().reverse();
+  document.getElementById('view').innerHTML = `
+  ${pageHead('Lecture Upload', 'Share learning materials and video links with classes')}
+  <div class="card">
+    <div class="card-head"><h2>New Lecture / Material</h2></div>
+    <div class="grid2">
+      <label class="fld">Class<select id="lcClass">${classOptions(DB.classes[0].id)}</select></label>
+      <label class="fld">Subject
+        <select id="lcSubject">${['English','Urdu','Mathematics','Islamiat','Science','Computer','Social Studies']
+          .map(s => `<option>${s}</option>`).join('')}</select></label>
+    </div>
+    <label class="fld mt">Title<input id="lcTitle" placeholder="e.g. Chapter 4 — Photosynthesis"></label>
+    <label class="fld mt">Video / File Link<input id="lcLink" placeholder="https://…"></label>
+    <label class="fld mt">Notes<textarea id="lcNotes" placeholder="Instructions for students…"></textarea></label>
+    <button class="btn green sm mt" onclick="saveLecture()">📤 Upload Lecture</button>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h2>Uploaded Materials</h2><span class="pill">${list.length}</span></div>
+    ${list.length ? list.map(l => `
+      <div class="att-row">
+        <div class="att-info">
+          <div class="att-name">${esc(l.title)}</div>
+          <div class="att-sub">${esc(clsName(l.classId))} · ${esc(l.subject)} · ${esc(l.date)}</div>
+          <div class="att-sub">${esc(l.notes || '')} ${l.link ? ' · <a href="' + esc(l.link) + '" target="_blank" rel="noopener">Open link</a>' : ''}</div>
+        </div>
+        <button class="btn red xs" onclick="deleteLecture('${l.id}')">Delete</button>
+      </div>`).join('') : emptyState('No lectures uploaded yet.', '🎥')}
+  </div>`;
+}
+
+function saveLecture(){
+  if (!guard(true)) return;
+  const title = document.getElementById('lcTitle').value.trim();
+  if (!title) return toast('Title is required', 'bad');
+  DB.lectures.push({
+    id: uid('lc'), classId: document.getElementById('lcClass').value,
+    subject: document.getElementById('lcSubject').value, title,
+    link: document.getElementById('lcLink').value.trim(),
+    notes: document.getElementById('lcNotes').value.trim(), date: todayISO()
+  });
+  saveDB(); toast('Lecture uploaded', 'ok'); pageLectures();
+}
+function deleteLecture(id){
+  if (!guard(true)) return;
+  if (!confirm('Delete this lecture?')) return;
+  DB.lectures = DB.lectures.filter(l => l.id !== id);
+  saveDB(); toast('Lecture deleted', 'ok'); pageLectures();
+}
+
+/* ---------------------------------------------------------------------------
+   20. QUIZ & MCQs
+--------------------------------------------------------------------------- */
+function pageQuiz(){
+  const list = DB.quizzes.slice().reverse();
+  document.getElementById('view').innerHTML = `
+  ${pageHead('Quiz & MCQs', 'Create multiple-choice quizzes and attempt them')}
+  <div class="card">
+    <div class="card-head"><h2>Create Quiz</h2></div>
+    <div class="grid2">
+      <label class="fld">Class<select id="qzClass">${classOptions(DB.classes[0].id)}</select></label>
+      <label class="fld">Subject
+        <select id="qzSubject">${['English','Urdu','Mathematics','Islamiat','Science','Computer']
+          .map(s => `<option>${s}</option>`).join('')}</select></label>
+    </div>
+    <label class="fld mt">Quiz Title<input id="qzTitle" placeholder="e.g. Grammar Quiz 1"></label>
+    <label class="fld mt">Questions — one per line, format:
+      <span class="muted sm">Question | Option1 | Option2 | Option3 | Correct option number (1-based)</span>
+      <textarea id="qzQs" placeholder="Which word is a noun? | Run | Apple | Quickly | 2"></textarea>
+    </label>
+    <button class="btn sm mt" onclick="saveQuiz()">＋ Create Quiz</button>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h2>Available Quizzes</h2><span class="pill">${list.length}</span></div>
+    ${list.length ? list.map(q => `
+      <div class="att-row">
+        <div class="att-info">
+          <div class="att-name">${esc(q.title)}</div>
+          <div class="att-sub">${esc(clsName(q.classId))} · ${esc(q.subject)} · ${q.questions.length} questions</div>
+        </div>
+        <div class="row gap">
+          <button class="btn sm" onclick="startQuiz('${q.id}')">Attempt</button>
+          <button class="btn red xs" onclick="deleteQuiz('${q.id}')">Delete</button>
+        </div>
+      </div>`).join('') : emptyState('No quizzes created yet.', '❓')}
+  </div>`;
+}
+
+function saveQuiz(){
+  if (!guard(true)) return;
+  const title = document.getElementById('qzTitle').value.trim();
+  const raw = document.getElementById('qzQs').value.trim();
+  if (!title) return toast('Quiz title is required', 'bad');
+  if (!raw) return toast('Add at least one question', 'bad');
+
+  const questions = [];
+  raw.split('\n').forEach(line => {
+    const parts = line.split('|').map(p => p.trim());
+    if (parts.length >= 5) {
+      questions.push({ q: parts[0], options: [parts[1], parts[2], parts[3]], answer: Math.max(1, Math.min(3, Number(parts[4]) || 1)) - 1 });
+    }
+  });
+  if (!questions.length) return toast('No valid questions found. Check the format.', 'bad');
+
+  DB.quizzes.push({
+    id: uid('qz'), classId: document.getElementById('qzClass').value,
+    subject: document.getElementById('qzSubject').value, title, questions
+  });
+  saveDB(); toast('Quiz created', 'ok'); pageQuiz();
+}
+
+function deleteQuiz(id){
+  if (!guard(true)) return;
+  if (!confirm('Delete this quiz?')) return;
+  DB.quizzes = DB.quizzes.filter(q => q.id !== id);
+  saveDB(); toast('Quiz deleted', 'ok'); pageQuiz();
+}
+
+function startQuiz(id){
+  const q = DB.quizzes.find(x => x.id === id);
+  if (!q) return;
+  openModal(q.title, q.questions.map((item, i) => `
+    <div class="mb">
+      <b>${i + 1}. ${esc(item.q)}</b>
+      ${item.options.map((o, oi) => `
+        <label class="row gap" style="margin-top:6px;cursor:pointer">
+          <input type="radio" name="qz-${i}" value="${oi}" style="width:18px;height:18px">
+          <span>${esc(o)}</span>
+        </label>`).join('')}
+    </div>`).join(''),
+    `<button class="btn ghost" onclick="closeModal()">Cancel</button>
+     <button class="btn green" onclick="submitQuiz('${id}')">Submit Quiz</button>`, true);
+}
+
+function submitQuiz(id){
+  const q = DB.quizzes.find(x => x.id === id);
+  if (!q) return;
+  let score = 0;
+  q.questions.forEach((item, i) => {
+    const sel = document.querySelector(`input[name="qz-${i}"]:checked`);
+    if (sel && Number(sel.value) === item.answer) score++;
+  });
+  const pct = Math.round(score / q.questions.length * 100);
+  closeModal();
+  openModal('Quiz Result', `
+    <div style="text-align:center;padding:10px 0">
+      ${ringHTML(pct)}
+      <h2 style="margin-top:12px">${score} / ${q.questions.length} correct</h2>
+      <p class="muted">${pct >= 40 ? 'Passed — well done!' : 'Below passing marks — please revise.'}</p>
+    </div>`,
+    `<button class="btn" onclick="closeModal()">Done</button>`);
+}
+
+/* ---------------------------------------------------------------------------
+   21. REPORTS & PRINTING
+--------------------------------------------------------------------------- */
+function pageReports(){
+  document.getElementById('view').innerHTML = `
+  ${pageHead('Reports & Printing', 'Generate printable reports for any module')}
+  <div class="card">
+    <div class="card-head"><h2>Available Reports</h2></div>
+    <div class="class-grid">
+      <button class="class-card g1" onclick="printAttendanceReport()"><div class="cn">Attendance</div><div class="cs">Class summary</div></button>
+      <button class="class-card g2" onclick="printResultsList('test')"><div class="cn">Test Results</div><div class="cs">All test records</div></button>
+      <button class="class-card g3" onclick="printResultsList('exam')"><div class="cn">Exam Results</div><div class="cs">All exam records</div></button>
+      <button class="class-card g4" onclick="printFeeReport()"><div class="cn">Fee Report</div><div class="cs">Monthly collection</div></button>
+      <button class="class-card g5" onclick="printTransactions()"><div class="cn">Transactions</div><div class="cs">Payment ledger</div></button>
+      <button class="class-card g6" onclick="printStudentList()"><div class="cn">Student List</div><div class="cs">All students</div></button>
+      <button class="class-card g7" onclick="printTeacherAttendance()"><div class="cn">Teacher Attendance</div><div class="cs">Check-in records</div></button>
+      <button class="class-card g8" onclick="printTimetable()"><div class="cn">Timetable</div><div class="cs">Selected class</div></button>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-head"><h2>Notes</h2></div>
+    <p class="muted sm">All printed documents include the academy name, document title, date, relevant tables and signature fields.
+    Use your browser's print dialog and choose <b>Save as PDF</b> to export a PDF copy.
+    Sample records are demonstration data only.</p>
+  </div>`;
+}
+
+/* ---------------------------------------------------------------------------
+   22. PRINT ENGINE
+--------------------------------------------------------------------------- */
+function printDoc(title, bodyHtml, meta){
+  const el = document.getElementById('printArea');
+  el.innerHTML = `
+    <div class="p-head">
+      <div class="p-logo">A</div>
+      <div>
+        <div class="p-name">Anisuno Academy</div>
+        <div class="p-tag">Excellence in Education</div>
+      </div>
+    </div>
+    <h2 class="p-title">${esc(title)}</h2>
+    <div class="p-meta">${meta || ''} &nbsp;|&nbsp; Printed: ${new Date().toLocaleString()}</div>
+    ${bodyHtml}
+    <div class="p-sign">
+      <div>Teacher Signature: ____________________</div>
+      <div>Principal Signature: ____________________</div>
+    </div>
+    <div class="p-note">Anisuno Academy School Management System — demonstration document. Sample data only.</div>`;
+  window.print();
+}
+
+/* ---------------------------------------------------------------------------
+   23. INITIALISATION
+--------------------------------------------------------------------------- */
+function buildDrawer(){
+  document.getElementById('drawerLinks').innerHTML =
+    MODULES.map(m => `<a href="#/${m.id}" onclick="setTimeout(()=>{state.params={}},0)">
+      <span class="di ${m.g}">${m.icon}</span>${esc(m.name)}</a>`).join('');
+}
+
+(function init(){
+  loadDB();
+  state.role = localStorage.getItem(ROLE_KEY) || 'Admin';
+  document.getElementById('roleSel').value = state.role;
+  buildDrawer();
+  window.addEventListener('hashchange', route);
+  if (!location.hash) location.hash = '#/dashboard';
+  route();
+})();
+</script>
+</body>
+</html>
+</body>
+</html>
